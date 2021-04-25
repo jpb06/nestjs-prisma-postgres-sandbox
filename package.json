@@ -6,7 +6,7 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "14.16.0",
+    "node": "14.x",
     "yarn": "1.22.10"
   },
   "scripts": {
@@ -22,7 +22,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest.e2e.json"
+    "test:ci": "jest --ci --coverage"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",
