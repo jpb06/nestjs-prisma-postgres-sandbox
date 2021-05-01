@@ -1,0 +1,10 @@
+version: '3'
+services:
+  sandbox-postgres:
+    image: 'postgres:13.1'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=POSTGRES_USER
+      - POSTGRES_PASSWORD=POSTGRES_PASSWORD
+      - POSTGRES_DB=POSTGRES_DB

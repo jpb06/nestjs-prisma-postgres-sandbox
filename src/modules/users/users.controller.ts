@@ -9,7 +9,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  getUsers(): Array<string> {
+  async getUsers(): Promise<Array<string>> {
     return this.usersService.getUsers();
   }
 }
