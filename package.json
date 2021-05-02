@@ -10,8 +10,8 @@
     "yarn": "1.22.10"
   },
   "scripts": {
-    "prebuild": "rimraf dist && yarn prisma generate",
-    "build": "yarn prisma:gen && nest build",
+    "prebuild": "rimraf dist",
+    "build": "yarn prisma:merge && yarn prisma generate && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "dev": "nest start --watch",
@@ -25,7 +25,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:ci": "jest --ci --coverage",
-    "prisma:gen": "cat src/modules/*/*.prisma > prisma/schema.prisma && yarn prisma format --schema prisma/schema.prisma",
+    "prisma:merge": "cat src/modules/*/*.prisma > prisma/schema.prisma && yarn prisma format --schema prisma/schema.prisma",
     "prisma:seed": "yarn prisma migrate dev && yarn prisma db seed --preview-feature"
   },
   "dependencies": {
