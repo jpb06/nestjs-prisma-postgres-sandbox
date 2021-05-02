@@ -3,7 +3,7 @@
 ![Code quality](https://img.shields.io/codefactor/grade/github/jpb06/nestjs-prisma-postgres-sandbox?logo=codefactor)
 ![Coverage](./badges/coverage-global%20coverage.svg)
 ![Github workflow](https://img.shields.io/github/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/checks?label=last%20workflow&logo=github-actions)
-![Last deployment](https://img.shields.io/github/deployments/jpb06/nestjs-prisma-postgres-sandbox/nestjs-prisma-postgres-sandbox?label=last%20deployment&logo=heroku)
+![Last deployment](https://img.shields.io/github/deployments/jpb06/nestjs-prisma-postgres-sandbox/nestjs-prisma-postgres?label=last%20deployment&logo=heroku)
 ![Last commit](https://img.shields.io/github/last-commit/jpb06/nestjs-prisma-postgres-sandbox?logo=git)
 
 You can find the [deployed app here](https://nestjs-prisma-postgres.herokuapp.com).
