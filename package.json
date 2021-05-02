@@ -11,7 +11,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "yarn prisma:gen && yarn prisma:mig && nest build",
+    "build": "yarn prisma:gen && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "dev": "nest start --watch",
@@ -26,8 +26,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:ci": "jest --ci --coverage",
     "prisma:gen": "cat src/modules/*/*.prisma > prisma/schema.prisma && yarn prisma format --schema prisma/schema.prisma",
-    "prisma:seed": "yarn prisma migrate dev && yarn prisma db seed --preview-feature",
-    "prisma:mig": "yarn prisma migrate deploy"
+    "prisma:seed": "yarn prisma migrate dev && yarn prisma db seed --preview-feature"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",
