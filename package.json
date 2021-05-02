@@ -11,13 +11,13 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "yarn prisma:mig && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "dev": "nest start --watch",
     "dev:db": "docker-compose down && docker-compose up sandbox-postgres",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "yarn prisma:gen && node dist/src/main",
+    "start:prod": "node dist/src/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -26,7 +26,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:ci": "jest --ci --coverage",
     "prisma:gen": "cat src/modules/*/*.prisma > prisma/schema.prisma && yarn prisma format --schema prisma/schema.prisma",
-    "prisma:seed": "npx prisma migrate dev && npx prisma db seed --preview-feature"
+    "prisma:seed": "yarn prisma migrate dev && yarn prisma db seed --preview-feature",
+    "prisma:mig": "yarn prisma migrate deploy"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",
