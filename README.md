@@ -10,11 +10,11 @@ You can find the [deployed app here](https://nestjs-prisma-postgres.herokuapp.co
 
 ## :zap: What is this repo about?
 
-This is a sandbox to evaluate nestjs and dig how fun it is to implement typical requirements for a backend; Enphasis en testing, given how dearly missed this requirement can be in 'real world' examples found here and there.
+This is a sandbox to evaluate nestjs and dig how fun it is to implement typical requirements for a backend, with an enphasis on testing, given how dearly missed this requirement can be in 'real world' examples found here and there.
 
 ## :zap: Stack
 
-So let's talk about the stack (pushing on an open door here, but hey).
+So let's talk about the stack (pushing on an open door here, but hey):
 
 | Package / techno             | Description                           | Documentation                                      |
 | ---------------------------- | ------------------------------------- | -------------------------------------------------- |
@@ -24,8 +24,8 @@ So let's talk about the stack (pushing on an open door here, but hey).
 | :elephant: postgresql        | Relational database engine            | https://www.postgresql.org/docs/                   |
 | :bug: Jest                   | Tests library                         | https://jestjs.io/fr/docs/getting-started          |
 | 🧪 supertest                 | End to end testing helpers            | https://github.com/visionmedia/supertest           |
-| :pencil2: eslint             | linter                                | https://eslint.org/docs/user-guide/getting-started |
-| :straight_ruler: prettier    | formatter                             | https://prettier.io/docs/en/index.html             |
+| :pencil2: eslint             | Linter                                | https://eslint.org/docs/user-guide/getting-started |
+| :straight_ruler: prettier    | Formatter                             | https://prettier.io/docs/en/index.html             |
 
 ## :zap: Subjects
 
