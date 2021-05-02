@@ -11,8 +11,6 @@ describe('PrismaService', () => {
     }).compile();
 
     service = module.get<PrismaService>(PrismaService);
-    service.onModuleInit();
-    service.onModuleDestroy();
   });
 
   it('should be defined', () => {
