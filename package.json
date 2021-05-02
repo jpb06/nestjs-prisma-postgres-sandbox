@@ -10,7 +10,7 @@
     "yarn": "1.22.10"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && yarn prisma generate",
     "build": "yarn prisma:gen && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
