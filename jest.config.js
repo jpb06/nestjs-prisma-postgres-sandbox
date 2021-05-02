@@ -5,7 +5,8 @@ module.exports = {
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  collectCoverageFrom: ['**/*.(t|j)s', '!**/*.prisma'],
+  collectCoverageFrom: ['**/*.ts'],
+  coveragePathIgnorePatterns: ['/tests-related/'],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
   coverageReporters: ['json-summary', 'text', 'lcov'],

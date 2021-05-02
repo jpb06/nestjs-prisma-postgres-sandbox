@@ -3,8 +3,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import {
   mockedUsers,
   mockedUsersNames,
-} from '../../../test/mock-data/users.mock-data';
-import { mockPrismaService } from '../../../test/mocks/prisma-service.mock';
+} from '../../../tests-related/mock-data/users.mock-data';
+import { mockPrismaService } from '../../../tests-related/mocks/prisma-service.mock';
 import { PrismaService } from '../../prisma/prisma.service';
 import { UsersService } from '../users.service';
 
