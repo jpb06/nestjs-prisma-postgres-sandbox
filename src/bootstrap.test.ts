@@ -7,8 +7,8 @@ import { mockedPrismaDisconnect } from './tests-related/mocks/prisma-disconnect.
 
 describe('bootstrap function', () => {
   let app: INestApplication;
-  let mockedConnect: jest.SpyInstance<Promise<void>, []>;
-  let mockedDisconnect: jest.SpyInstance<Promise<unknown>, []>;
+  let mockedConnect: jest.SpyInstance<unknown, unknown[]>;
+  let mockedDisconnect: jest.SpyInstance<unknown, unknown[]>;
 
   beforeEach(() => {
     mockedConnect = mockedPrismaConnect();

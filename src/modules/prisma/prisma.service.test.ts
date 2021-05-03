@@ -6,8 +6,8 @@ import { PrismaService } from './prisma.service';
 
 describe('PrismaService', () => {
   let service: PrismaService;
-  let mockedConnect: jest.SpyInstance<Promise<void>, []>;
-  let mockedDisconnect: jest.SpyInstance<Promise<unknown>, []>;
+  let mockedConnect: jest.SpyInstance<unknown, unknown[]>;
+  let mockedDisconnect: jest.SpyInstance<unknown, unknown[]>;
 
   beforeEach(async () => {
     mockedConnect = mockedPrismaConnect();
