@@ -35,6 +35,9 @@ jobs:
       - name: Linter
         run: yarn lint
 
+      - name: Prisma
+        run: yarn prisma:merge && yarn prisma generate
+
       - name: Tests
         run: yarn test:ci
 
