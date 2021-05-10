@@ -9,6 +9,11 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": "src",
+    "paths": {
+      "@tests/*": ["tests-related/*"],
+      "@owntypes/*": ["types/*"]
+    }
   }
 }

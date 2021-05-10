@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-
 import {
   mockedUsers,
   mockedUsersNames,
-} from '../../../tests-related/mock-data/users.mock-data';
-import { mockPrismaService } from '../../../tests-related/mocks/prisma-service.mock';
-import { PrismaService } from '../../prisma/prisma.service';
-import { UsersService } from '../users.service';
+} from '@tests/mock-data/users.mock-data';
+import { mockPrismaService } from '@tests/mocks/prisma-service.mock';
+
+import { DatabaseService } from '../../database/database.service';
+import { UsersService } from './users.service';
 
 describe('Users service', () => {
   let service: UsersService;
@@ -17,7 +17,7 @@ describe('Users service', () => {
       providers: [
         UsersService,
         {
-          provide: PrismaService,
+          provide: DatabaseService,
           useValue: PrismaServiceMock,
         },
       ],

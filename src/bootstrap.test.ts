@@ -1,9 +1,9 @@
 import { INestApplication, Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { mockedPrismaConnect } from '@tests/spies/prisma-connect.spy';
+import { mockedPrismaDisconnect } from '@tests/spies/prisma-disconnect.spy';
 
 import { bootstrap } from './bootstrap';
-import { mockedPrismaConnect } from './tests-related/mocks/prisma-connect.spy';
-import { mockedPrismaDisconnect } from './tests-related/mocks/prisma-disconnect.spy';
 
 describe('bootstrap function', () => {
   let app: INestApplication;
