@@ -25,7 +25,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:ci": "jest --ci --coverage",
-    "prisma:merge": "cat src/modules/*/*.prisma > prisma/schema.prisma && yarn prisma format --schema prisma/schema.prisma",
+    "prisma:merge": "ts-node ./scripts/generate.prisma.schema.ts && yarn prisma format --schema prisma/schema.prisma",
     "prisma:seed": "yarn prisma migrate dev && yarn prisma db seed --preview-feature"
   },
   "dependencies": {
@@ -54,6 +54,7 @@
     "@nestjs/testing": "^7.6.15",
     "@types/bcrypt": "^3.0.1",
     "@types/express": "^4.17.11",
+    "@types/fs-extra": "^9.0.11",
     "@types/jest": "^26.0.22",
     "@types/node": "^15.0.1",
     "@types/passport-jwt": "^3.0.5",
@@ -64,6 +65,7 @@
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "fs-extra": "^10.0.0",
     "jest": "^26.6.3",
     "jest-mock-extended": "^1.0.14",
     "prettier": "^2.2.1",
