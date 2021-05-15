@@ -4,8 +4,10 @@ import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiBody,
+  ApiCreatedResponse,
+  ApiInternalServerErrorResponse,
+  ApiOkResponse,
   ApiOperation,
-  ApiResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -31,13 +33,16 @@ export class UsersController {
     description: 'The login route',
   })
   @ApiBody({ description: 'The user credentials', type: LoginDto })
-  @ApiResponse({
-    status: 201,
+  @ApiCreatedResponse({
     description: 'Authentication succeeded',
     type: LoggedUserDto,
   })
   @ApiUnauthorizedResponse({
     description: 'Authentication failure',
+    type: ApiResponseDto,
+  })
+  @ApiInternalServerErrorResponse({
+    description: 'Internal server error',
     type: ApiResponseDto,
   })
   async login(
@@ -51,15 +56,19 @@ export class UsersController {
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Logged user profile',
-    description: 'Retrieves the logged user profile',
+    description:
+      'Retrieves the logged user profile from the jwt bearer token provided',
   })
-  @ApiResponse({
-    status: 200,
+  @ApiOkResponse({
     description: 'Logged user profile',
     type: JwtPayloadDto,
   })
   @ApiUnauthorizedResponse({
-    description: 'Missing or invalid/expired token',
+    description: 'Missing, invalid or expired token',
+    type: ApiResponseDto,
+  })
+  @ApiInternalServerErrorResponse({
+    description: 'Internal server error',
     type: ApiResponseDto,
   })
   getProfile(
