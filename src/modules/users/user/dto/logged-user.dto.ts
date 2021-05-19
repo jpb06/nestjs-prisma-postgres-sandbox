@@ -7,10 +7,10 @@ export class LoggedUserDto {
   @ApiProperty()
   email: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: 'string', nullable: true })
   firstName: string | null;
 
-  @ApiProperty()
+  @ApiProperty({ type: 'string', nullable: true })
   lastName: string | null;
 
   @ApiProperty()
