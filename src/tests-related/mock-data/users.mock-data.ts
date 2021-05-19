@@ -1,4 +1,21 @@
-export const mockedUsers = [{ firstName: 'yolo', lastName: 'yola' }];
-export const mockedUsersNames = mockedUsers.map(
-  (el) => `${el.firstName} ${el.lastName}`,
-);
+import { Role } from '@prisma/client';
+
+export const mockedUser = {
+  email: 'yolo@cool.org',
+  firstName: 'yolo',
+  lastName: 'yola',
+  role: Role.USER,
+};
+
+export const mockedUsers = [
+  {
+    ...mockedUser,
+    id: 1,
+    createdAt: new Date(),
+  },
+];
+
+export const loggedUserJwtPayload = {
+  ...mockedUser,
+  sub: 1,
+};
