@@ -8,6 +8,7 @@ export const bootstrap = async (): Promise<INestApplication> => {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Backend sandbox')
     .setDescription('The backend sandbox description')
     .setVersion('1.0')

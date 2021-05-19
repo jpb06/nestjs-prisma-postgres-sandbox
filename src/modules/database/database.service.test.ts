@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { mockedPrismaConnect } from '@tests/spies/prisma-connect.spy';
+import { mockedPrismaDisconnect } from '@tests/spies/prisma-disconnect.spy';
 
-import { mockedPrismaConnect } from '../../tests-related/mocks/prisma-connect.spy';
-import { mockedPrismaDisconnect } from '../../tests-related/mocks/prisma-disconnect.spy';
-import { PrismaService } from './prisma.service';
+import { DatabaseService } from './database.service';
 
-describe('PrismaService', () => {
-  let service: PrismaService;
+describe('Database service', () => {
+  let service: DatabaseService;
   let mockedConnect: jest.SpyInstance<unknown, unknown[]>;
   let mockedDisconnect: jest.SpyInstance<unknown, unknown[]>;
 
@@ -14,10 +14,10 @@ describe('PrismaService', () => {
     mockedDisconnect = mockedPrismaDisconnect();
 
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PrismaService],
+      providers: [DatabaseService],
     }).compile();
 
-    service = module.get<PrismaService>(PrismaService);
+    service = module.get<DatabaseService>(DatabaseService);
   });
 
   afterAll(async () => {

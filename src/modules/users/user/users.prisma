@@ -4,6 +4,7 @@ model User {
    email     String   @unique
    firstName String?
    lastName  String?
+   password  String
    role      Role     @default(USER)
 }
 
