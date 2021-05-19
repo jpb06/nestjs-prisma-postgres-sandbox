@@ -27,6 +27,66 @@ So let's talk about the stack (pushing on an open door here, but hey):
 | :pencil2: eslint             | Linter                                | https://eslint.org/docs/user-guide/getting-started |
 | :straight_ruler: prettier    | Formatter                             | https://prettier.io/docs/en/index.html             |
 
+## :zap: Guidelines
+
+### :diamonds: Schema splitting
+
+We do not want a huge prisma schema. We want to isolate each model (table or set of tables) in its own file.
+
+### :diamonds: Well documented routes
+
+Let's have a swagger documenting properly exposed routes, that is mainly for each route:
+
+- a description.
+- the list of possible responses.
+- a definition of the inputs and outputs.
+
+### :diamonds: Full testing coverage
+
+We want to test everything to learn how to properly test, and to face every single difficulty that comes with testing. We will at very least do end to end using superagent, controllers testing, service testing.
+
+## :zap: Usage
+
+### :diamonds: run locally
+
+:point_down: Since our prisma schemas are split within modules, we will have to merge them all in one file prisma can understand. Let's do just that:
+
+```bash
+yarn prisma:merge
+```
+
+:point_down: Now, we need to tell prisma to generate in node_modules the code actually allowing us to interact with the database:
+
+```bash
+yarn prisma:gen
+```
+
+:point_down: You will need docker and docker-compose to get the postgres database up and running. You can use this command to launch the database container:
+
+```bash
+yarn dev:db
+```
+
+:point_down: Then, let's inject some data in our database using:
+
+```bash
+yarn prisma:seed
+```
+
+:point_down: We can now launch the backend in dev:
+
+```bash
+yarn dev
+```
+
+### :diamonds: test all the things
+
+:point_down: We can run all the tests and get a coverage report using the following:
+
+```bash
+yarn test:dev
+```
+
 ## :zap: Subjects
 
 ### :diamonds: Authentication
