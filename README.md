@@ -45,6 +45,10 @@ Let's have a swagger documenting properly exposed routes, that is mainly for eac
 
 We want to test everything to learn how to properly test, and to face every single difficulty that comes with testing. We will at very least do end to end using superagent, controllers testing, service testing.
 
+### :diamonds: No testing against the database
+
+All tests should run without any interaction with a database.
+
 ## :zap: Usage
 
 ### :diamonds: run locally
@@ -67,7 +71,7 @@ yarn prisma:gen
 yarn dev:db
 ```
 
-:point_down: Then, let's inject some data in our database using:
+:point_down: Then, let's inject some data in our dev database using:
 
 ```bash
 yarn prisma:seed
