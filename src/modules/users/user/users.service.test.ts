@@ -1,16 +1,15 @@
+import { mockDeep } from 'jest-mock-extended';
+
 import { Test, TestingModule } from '@nestjs/testing';
-import {
-  mockedUsers,
-  mockedUsersNames,
-} from '@tests/mock-data/users.mock-data';
-import { mockPrismaService } from '@tests/mocks/prisma-service.mock';
+import { PrismaClient } from '@prisma/client';
+import { mockedUsers } from '@tests/mock-data/users.mock-data';
 
 import { DatabaseService } from '../../database/database.service';
 import { UsersService } from './users.service';
 
 describe('Users service', () => {
   let service: UsersService;
-  const { findManyMock, PrismaServiceMock } = mockPrismaService();
+  const dbMock = mockDeep<PrismaClient>();
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -18,7 +17,7 @@ describe('Users service', () => {
         UsersService,
         {
           provide: DatabaseService,
-          useValue: PrismaServiceMock,
+          useValue: dbMock,
         },
       ],
     }).compile();
@@ -26,11 +25,15 @@ describe('Users service', () => {
     service = module.get<UsersService>(UsersService);
   });
 
-  it('should return users names', async () => {
-    findManyMock.mockReturnValue(Promise.resolve(mockedUsers));
+  it('should return a user if existing', async () => {
+    const user = {
+      ...mockedUsers[0],
+      password: 'yolo',
+    };
+    dbMock.user.findFirst.mockResolvedValueOnce(user);
 
-    const result = await service.getUsers();
+    const result = await service.findOne(user.email);
 
-    expect(result).toStrictEqual(mockedUsersNames);
+    expect(result).toStrictEqual(user);
   });
 });

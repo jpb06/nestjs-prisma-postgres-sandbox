@@ -1,38 +1,75 @@
-import * as request from 'supertest';
+import bcrypt from 'bcrypt';
+import { mockDeep } from 'jest-mock-extended';
+import jwt from 'jsonwebtoken';
+import request from 'supertest';
 
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import {
-  mockedUsers,
-  mockedUsersNames,
-} from '@tests/mock-data/users.mock-data';
-import { mockPrismaService } from '@tests/mocks/prisma-service.mock';
+import { PrismaClient } from '@prisma/client';
+import { mockedUser, mockedUsers } from '@tests/mock-data/users.mock-data';
 
 import { DatabaseService } from '../../database/database.service';
 import { UsersModule } from './users.module';
 
 describe('UsersController (e2e)', () => {
   let app: INestApplication;
-  const { findManyMock, PrismaServiceMock } = mockPrismaService();
+  const dbMock = mockDeep<PrismaClient>();
 
   beforeEach(async () => {
     const usersModule: TestingModule = await Test.createTestingModule({
       imports: [UsersModule],
     })
       .overrideProvider(DatabaseService)
-      .useValue(PrismaServiceMock)
+      .useValue(dbMock)
       .compile();
 
     app = usersModule.createNestApplication();
     await app.init();
   });
 
-  it('/users (GET)', () => {
-    findManyMock.mockReturnValue(Promise.resolve(mockedUsers));
+  it('POST /user/login', async (done) => {
+    const password = await bcrypt.hash('pwd', 11);
+    dbMock.user.findFirst.mockResolvedValueOnce({
+      ...mockedUsers[0],
+      password,
+    });
 
-    return request(app.getHttpServer())
-      .get('/users')
+    request(app.getHttpServer())
+      .post('/user/login')
+      .send({ username: mockedUsers[0].email, password: 'pwd' })
+      .expect(201)
+      .end((err, res) => {
+        if (err) {
+          done.fail();
+        }
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            ...mockedUser,
+          }),
+        );
+        done();
+      });
+  });
+
+  it('GET /user/profile', async (done) => {
+    const payload = { cool: 'yolo' };
+    const token = jwt.sign(payload, process.env.JWT_SECRET || '');
+
+    request(app.getHttpServer())
+      .get('/user/profile')
+      .auth(token, { type: 'bearer' })
+      .send()
       .expect(200)
-      .expect(mockedUsersNames);
+      .end((err, res) => {
+        if (err) {
+          done.fail();
+        }
+        expect(res.body).toEqual(
+          expect.objectContaining({
+            ...payload,
+          }),
+        );
+        done();
+      });
   });
 });

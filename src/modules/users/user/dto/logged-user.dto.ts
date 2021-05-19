@@ -8,10 +8,10 @@ export class LoggedUserDto {
   email: string;
 
   @ApiProperty()
-  firstName: string;
+  firstName: string | null;
 
   @ApiProperty()
-  lastName: string;
+  lastName: string | null;
 
   @ApiProperty()
   token: string;
