@@ -33,10 +33,10 @@ So let's talk about the stack (pushing on an open door here, but hey):
 
 Let's use passport to setup jwt based authentication. Two routes were defined to demonstrate the use case:
 
-| Route             | Description                   | Documentation                                                                   |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------------------- |
-| POST /user/login  | The login route               | https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_login      |
-| GET /user/profile | Logged user profile retrieval | https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_getProfile |
+| Route             | Description                   | Documentation                                                                           |
+| ----------------- | ----------------------------- | --------------------------------------------------------------------------------------- |
+| POST /user/login  | The login route               | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_login)      |
+| GET /user/profile | Logged user profile retrieval | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_getProfile) |
 
 We have two users in database to play with the routes:
 
