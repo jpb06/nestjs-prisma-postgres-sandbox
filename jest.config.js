@@ -15,8 +15,8 @@ module.exports = {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
   collectCoverageFrom: ['**/*.ts'],
-  coveragePathIgnorePatterns: ['/tests-related/'],
-  coverageDirectory: '../coverage',
+  coveragePathIgnorePatterns: ['/tests-related/', '/.dto.ts/'],
+  coverageDirectory: './coverage',
   testEnvironment: 'node',
   coverageReporters: ['json-summary', 'text', 'lcov'],
 };
