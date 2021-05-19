@@ -29,4 +29,18 @@ So let's talk about the stack (pushing on an open door here, but hey):
 
 ## :zap: Subjects
 
-Soon™
+### :diamonds: Authentication
+
+Let's use passport to setup jwt based authentication. Two routes were defined to demonstrate the use case:
+
+| Route             | Description                   | Documentation                                                                           |
+| ----------------- | ----------------------------- | --------------------------------------------------------------------------------------- |
+| POST /user/login  | The login route               | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_login)      |
+| GET /user/profile | Logged user profile retrieval | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_getProfile) |
+
+We have two users in database to play with the routes:
+
+- alice@cool.org / alice
+- bob@cool.org / bob
+
+:white_check_mark: Tests: e2e, controllers, services, local passport strategy.
