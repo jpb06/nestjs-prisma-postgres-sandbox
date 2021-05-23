@@ -12,6 +12,7 @@
     "incremental": true,
     "isolatedModules": true,
     "module": "commonjs",
+    "moduleResolution": "Node",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -27,7 +28,8 @@
     "outDir": "./dist",
     "paths": {
       "@tests/*": ["tests-related/*"],
-      "@owntypes/*": ["types/*"]
+      "@owntypes/*": ["types/*"],
+      "@modules/*": ["modules/*"]
     }
   }
 }
