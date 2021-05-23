@@ -1,10 +1,10 @@
-import * as bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function main() {
+export const seed = async () => {
   const alice = await prisma.user.upsert({
     where: { email: 'alice@cool.org' },
     update: {},
@@ -26,14 +26,8 @@ async function main() {
       password: await bcrypt.hash('bob', 11),
     },
   });
-  console.log({ alice, bob });
-}
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+  console.log({ alice, bob });
+  process.exit(0);
+};
+seed();
