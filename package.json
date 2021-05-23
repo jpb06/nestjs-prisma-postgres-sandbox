@@ -10,7 +10,7 @@
     "yarn": "1.22.10"
   },
   "scripts": {
-    "ts-node": "ts-node --compiler-options {\"\"\"module\"\"\":\"\"\"commonjs\"\"\"}",
+    "ts-node": "ts-node --compiler-options {\\\"module\\\":\\\"commonjs\\\"}",
     "prebuild": "rimraf dist",
     "build": "yarn prisma:merge && yarn prisma:gen && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
