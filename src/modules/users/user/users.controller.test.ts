@@ -29,7 +29,7 @@ describe('Users controller', () => {
   });
 
   it('should return the user once logged in', async () => {
-    getLoggedUserMock.mockReturnValueOnce(Promise.resolve(mockedUsers));
+    getLoggedUserMock.mockResolvedValueOnce(mockedUsers);
 
     const result = await controller.login({
       user: mockedUsers[0],
