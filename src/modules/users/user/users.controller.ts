@@ -22,7 +22,15 @@ import { LoggedUserDto } from './dto/logged-user.dto';
 import { LoginDto } from './dto/login.dto';
 
 @Controller('user')
-@ApiTags('users')
+@ApiTags('Users')
+@ApiUnauthorizedResponse({
+  description: 'Authentication failure',
+  type: ApiResponseDto,
+})
+@ApiInternalServerErrorResponse({
+  description: 'Internal server error',
+  type: ApiResponseDto,
+})
 export class UsersController {
   constructor(private readonly authService: AuthService) {}
 
@@ -36,14 +44,6 @@ export class UsersController {
   @ApiCreatedResponse({
     description: 'Authentication succeeded',
     type: LoggedUserDto,
-  })
-  @ApiUnauthorizedResponse({
-    description: 'Authentication failure',
-    type: ApiResponseDto,
-  })
-  @ApiInternalServerErrorResponse({
-    description: 'Internal server error',
-    type: ApiResponseDto,
   })
   async login(
     @Request() req: ExpressRequest & { user: User },
@@ -62,14 +62,6 @@ export class UsersController {
   @ApiOkResponse({
     description: 'Logged user profile',
     type: JwtPayloadDto,
-  })
-  @ApiUnauthorizedResponse({
-    description: 'Missing, invalid or expired token',
-    type: ApiResponseDto,
-  })
-  @ApiInternalServerErrorResponse({
-    description: 'Internal server error',
-    type: ApiResponseDto,
   })
   getProfile(
     @Request() req: ExpressRequest & { user: JwtPayloadDto },
