@@ -1,4 +1,4 @@
-import { DatabaseService } from '@modules/database/database.service';
+import { DatabaseService } from '@database/database.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from '@prisma/client';
 

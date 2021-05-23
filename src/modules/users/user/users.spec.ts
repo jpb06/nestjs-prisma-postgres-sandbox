@@ -3,12 +3,12 @@ import { mockDeep } from 'jest-mock-extended';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 
+import { DatabaseService } from '@database/database.service';
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
 import { mockedUser, mockedUsers } from '@tests/mock-data/users.mock-data';
 
-import { DatabaseService } from '../../database/database.service';
 import { UsersModule } from './users.module';
 
 describe('UsersController (e2e)', () => {

@@ -29,7 +29,8 @@
     "paths": {
       "@tests/*": ["tests-related/*"],
       "@owntypes/*": ["types/*"],
-      "@modules/*": ["modules/*"]
+      "@modules/*": ["modules/*"],
+      "@database/*": ["modules/database/*"]
     }
   }
 }
