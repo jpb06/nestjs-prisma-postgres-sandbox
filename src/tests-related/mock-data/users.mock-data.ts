@@ -7,13 +7,12 @@ export const mockedUser = {
   role: Role.USER,
 };
 
-export const mockedUsers = [
-  {
-    ...mockedUser,
-    id: 1,
-    createdAt: new Date(),
-  },
-];
+export const loggedUser = {
+  ...mockedUser,
+  id: 1,
+  createdAt: new Date(),
+  token: 'cool',
+};
 
 export const loggedUserJwtPayload = {
   ...mockedUser,
