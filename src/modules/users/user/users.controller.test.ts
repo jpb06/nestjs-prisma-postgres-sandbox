@@ -1,10 +1,11 @@
 import { Request as ExpressRequest } from 'express';
+import { mockDeep } from 'jest-mock-extended';
 
 import { Test, TestingModule } from '@nestjs/testing';
 import { User } from '@prisma/client';
 import {
+  loggedUser,
   loggedUserJwtPayload,
-  mockedUsers,
 } from '@tests/mock-data/users.mock-data';
 
 import { AuthService } from '../auth/auth.service';
@@ -13,7 +14,7 @@ import { UsersController } from './users.controller';
 
 describe('Users controller', () => {
   let controller: UsersController;
-  const getLoggedUserMock = jest.fn();
+  const authServiceMock = mockDeep<AuthService>();
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -21,7 +22,7 @@ describe('Users controller', () => {
       providers: [
         {
           provide: AuthService,
-          useValue: { getLoggedUser: getLoggedUserMock },
+          useValue: authServiceMock,
         },
       ],
     }).compile();
@@ -29,13 +30,13 @@ describe('Users controller', () => {
   });
 
   it('should return the user once logged in', async () => {
-    getLoggedUserMock.mockResolvedValueOnce(mockedUsers);
+    authServiceMock.getLoggedUser.mockReturnValueOnce(loggedUser);
 
     const result = await controller.login({
-      user: mockedUsers[0],
-    } as ExpressRequest & { user: User });
+      user: loggedUser,
+    } as unknown as ExpressRequest & { user: User });
 
-    expect(result).toStrictEqual(mockedUsers);
+    expect(result).toStrictEqual(loggedUser);
   });
 
   it('should return the logged user data', () => {
