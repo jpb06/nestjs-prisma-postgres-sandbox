@@ -2,27 +2,27 @@ import { DatabaseService } from '@database/database.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from '@prisma/client';
 
-import { BookDto } from './dto/Book.dto';
-import { NewBookDto } from './dto/newbook.dto';
+import { CreateBookDto } from './dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BooksService {
   constructor(private db: DatabaseService) {}
 
-  async create(book: NewBookDto): Promise<Book> {
+  async create(book: CreateBookDto): Promise<Book> {
     return this.db.book.create({
       data: book,
     });
   }
 
-  async update(book: BookDto): Promise<Book> {
-    const existingBook = await this.getById(book.id);
+  async update(id: number, book: UpdateBookDto): Promise<Book> {
+    const existingBook = await this.getById(id);
     if (!existingBook) {
       throw new NotFoundException();
     }
 
     return this.db.book.update({
-      where: { id: book.id },
+      where: { id },
       data: book,
     });
   }
