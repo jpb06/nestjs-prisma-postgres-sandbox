@@ -1,9 +1,14 @@
 import { mockDeep } from 'jest-mock-extended';
 
+import { DatabaseService } from '@database/database.service';
+import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
+import {
+  mockedBook,
+  mockedUpdatedBook,
+} from '@tests/mock-data/books.mock-data';
 
-import { DatabaseService } from '../../database/database.service';
 import { BooksService } from './books.service';
 
 describe('Books service', () => {
@@ -46,46 +51,45 @@ describe('Books service', () => {
     expect(result).toStrictEqual(persistedBook);
   });
 
-  it('should update a book', async () => {
-    const book = {
-      id: 1,
-      idAuthor: 1,
-      idCategory: 1,
-      name: 'Hyperion',
-      publicationDate: 1989,
-      createdAt: new Date(),
-    };
-    const updatedBook = { ...book, name: 'yolo' };
-    dbMock.book.update.mockResolvedValueOnce(updatedBook);
+  it('should throw an error if the book to update does not exist', async () => {
+    dbMock.book.findFirst.mockResolvedValueOnce(null);
 
-    const result = await service.update(updatedBook);
+    expect(service.update(1, mockedUpdatedBook)).rejects.toThrowError(
+      new NotFoundException(),
+    );
+  });
+
+  it('should update a book', async () => {
+    dbMock.book.findFirst.mockResolvedValueOnce(mockedBook);
+    dbMock.book.update.mockResolvedValueOnce(mockedUpdatedBook);
+
+    const result = await service.update(1, mockedUpdatedBook);
 
     expect(dbMock.book.update).toHaveBeenCalledWith({
-      where: { id: updatedBook.id },
-      data: updatedBook,
+      where: { id: 1 },
+      data: mockedUpdatedBook,
     });
-    expect(result).toStrictEqual(updatedBook);
+    expect(result).toStrictEqual(mockedUpdatedBook);
+  });
+
+  it('should throw an error if the book to delete does not exist', async () => {
+    dbMock.book.findFirst.mockResolvedValueOnce(null);
+
+    expect(service.deleteById(1)).rejects.toThrowError(new NotFoundException());
   });
 
   it('should delete a book', async () => {
-    const book = {
-      id: 1,
-      idAuthor: 1,
-      idCategory: 1,
-      name: 'Hyperion',
-      publicationDate: 1989,
-      createdAt: new Date(),
-    };
-    dbMock.book.delete.mockResolvedValueOnce(book);
+    dbMock.book.findFirst.mockResolvedValueOnce(mockedBook);
+    dbMock.book.delete.mockResolvedValueOnce(mockedBook);
 
-    const result = await service.deleteById(book.id);
+    const result = await service.deleteById(mockedBook.id);
 
     expect(dbMock.book.delete).toHaveBeenCalledWith({
       where: {
-        id: book.id,
+        id: mockedBook.id,
       },
     });
-    expect(result).toStrictEqual(book);
+    expect(result).toStrictEqual(mockedBook);
   });
 
   it('should get all books', async () => {
@@ -116,16 +120,8 @@ describe('Books service', () => {
 
   it('should get a book by its name', async () => {
     const name = 'Hyperion';
-    const book = {
-      id: 1,
-      idAuthor: 1,
-      idCategory: 1,
-      name,
-      publicationDate: 1989,
-      createdAt: new Date(),
-    };
 
-    dbMock.book.findFirst.mockResolvedValueOnce(book);
+    dbMock.book.findFirst.mockResolvedValueOnce(mockedBook);
 
     const result = await service.getByName(name);
 
@@ -134,6 +130,6 @@ describe('Books service', () => {
         name,
       },
     });
-    expect(result).toStrictEqual(book);
+    expect(result).toStrictEqual(mockedBook);
   });
 });
