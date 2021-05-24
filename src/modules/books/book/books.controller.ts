@@ -1,3 +1,4 @@
+import { ApiRoute } from '@decorators/api-route';
 import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 import {
   Body,
@@ -10,109 +11,66 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBadRequestResponse,
-  ApiBearerAuth,
-  ApiCreatedResponse,
-  ApiInternalServerErrorResponse,
-  ApiNotFoundResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiTags,
-  ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
-import { ApiResponseDto } from '@owntypes/dto/api-response.dto';
-import { BadRequestDto } from '@owntypes/dto/bad-request-response.dto';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { BooksService } from './books.service';
-import { BookDto } from './dto/Book.dto';
-import { NewBookDto } from './dto/newbook.dto';
+import { CreateBookDto } from './dto/create-book.dto';
+import { PersistedBookDto } from './dto/persisted-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('books')
 @ApiTags('Books')
 @ApiBearerAuth()
-@ApiUnauthorizedResponse({
-  description: 'Missing, invalid or expired token',
-  type: ApiResponseDto,
-})
-@ApiInternalServerErrorResponse({
-  description: 'Internal server error',
-  type: ApiResponseDto,
-})
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @Get()
-  @ApiOperation({
+  @ApiRoute({
     summary: 'Get all books',
     description: 'Retrieves all the books',
+    ok: { type: [PersistedBookDto], description: 'The available books' },
   })
-  @ApiOkResponse({
-    description: 'The available books',
-    type: [BookDto],
-  })
-  async getBooks(): Promise<Array<BookDto>> {
+  async getBooks(): Promise<Array<PersistedBookDto>> {
     return this.booksService.getAll();
   }
 
   @Post()
-  @ApiOperation({
+  @ApiRoute({
     summary: 'Create a book',
     description: 'Creates a new book',
+    created: { type: PersistedBookDto, description: 'The created book' },
+    badRequest: {},
   })
-  @ApiCreatedResponse({
-    description: 'The created book',
-    type: BookDto,
-  })
-  @ApiBadRequestResponse({
-    description: 'Bad request',
-    type: BadRequestDto,
-  })
-  async createBook(@Body() newBook: NewBookDto): Promise<BookDto> {
+  async createBook(@Body() newBook: CreateBookDto): Promise<PersistedBookDto> {
     return this.booksService.create(newBook);
   }
 
   @Put(':id')
-  @ApiOperation({
+  @ApiRoute({
     summary: 'Update a book',
     description: 'Modifies a book',
-  })
-  @ApiOkResponse({
-    description: 'The modified book',
-    type: BookDto,
-  })
-  @ApiNotFoundResponse({
-    description: "The requested book wasn't found",
-    type: ApiResponseDto,
-  })
-  @ApiBadRequestResponse({
-    description: 'Bad request',
-    type: BadRequestDto,
+    ok: { type: PersistedBookDto, description: 'The modified book' },
+    notFound: { description: "The requested book wasn't found" },
+    badRequest: {},
   })
   async updateBook(
     @Param('id', new ParseIntPipe()) id: number,
-    @Body() book: BookDto,
-  ): Promise<BookDto> {
-    return this.booksService.update(book);
+    @Body() book: UpdateBookDto,
+  ): Promise<PersistedBookDto> {
+    return this.booksService.update(id, book);
   }
 
   @Delete(':id')
-  @ApiOperation({
+  @ApiRoute({
     summary: 'Delete a book',
     description: 'Removes a book',
-  })
-  @ApiOkResponse({
-    description: 'The deleted book',
-    type: BookDto,
-  })
-  @ApiNotFoundResponse({
-    description: "The requested book wasn't found",
-    type: ApiResponseDto,
+    ok: { type: PersistedBookDto, description: 'The deleted book' },
+    notFound: { description: "The requested book wasn't found" },
   })
   async deleteBook(
     @Param('id', new ParseIntPipe()) id: number,
-  ): Promise<BookDto> {
+  ): Promise<PersistedBookDto> {
     return this.booksService.deleteById(id);
   }
 }
