@@ -119,3 +119,23 @@ We have two users in database to play with the routes:
 - :white_check_mark: controllers
 - :white_check_mark: services
 - :white_check_mark: local passport strategy
+
+### :diamonds: CRUD
+
+Let's create CRUD routes to manage a list of books.
+
+#### :rocket: Routes
+
+| Route              | Description         | Documentation                                                                           |
+| ------------------ | ------------------- | --------------------------------------------------------------------------------------- |
+| GET /books         | Retrieves all books | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_getBooks)   |
+| POST /books        | Creates a book      | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_createBook) |
+| PUT /books/{id}    | Updates a book      | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_updateBook) |
+| DELETE /books/{id} | Deletes a book      | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_deleteBook) |
+
+#### 🧪 Tests
+
+- :white_check_mark: e2e
+- :white_check_mark: controllers
+- :white_check_mark: services
+- :white_check_mark: validation pipe
