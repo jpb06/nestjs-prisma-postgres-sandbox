@@ -27,7 +27,6 @@
     "sourceMap": true,
     "outDir": "./dist",
     "paths": {
-      "@src": ["./*"],
       "@tests/*": ["./tests-related/*"],
       "@owntypes/*": ["./types/*"],
       "@modules/*": ["./modules/*"],
