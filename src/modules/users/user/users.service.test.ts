@@ -1,10 +1,10 @@
 import { mockDeep } from 'jest-mock-extended';
 
+import { DatabaseService } from '@database/database.service';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
-import { mockedUsers } from '@tests/mock-data/users.mock-data';
+import { loggedUser } from '@tests/mock-data/users.mock-data';
 
-import { DatabaseService } from '../../database/database.service';
 import { UsersService } from './users.service';
 
 describe('Users service', () => {
@@ -27,7 +27,7 @@ describe('Users service', () => {
 
   it('should return a user if existing', async () => {
     const user = {
-      ...mockedUsers[0],
+      ...loggedUser,
       password: 'yolo',
     };
     dbMock.user.findFirst.mockResolvedValueOnce(user);

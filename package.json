@@ -10,6 +10,7 @@
     "yarn": "1.22.10"
   },
   "scripts": {
+    "ts-node": "ts-node --compiler-options {\\\"module\\\":\\\"commonjs\\\"}",
     "prebuild": "rimraf dist",
     "build": "yarn prisma:merge && yarn prisma:gen && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -40,6 +41,8 @@
     "@nestjs/terminus": "^7.1.2",
     "@prisma/client": "^2.23.0",
     "bcrypt": "^5.0.1",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

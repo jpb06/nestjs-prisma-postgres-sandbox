@@ -95,16 +95,27 @@ yarn test:dev
 
 ### :diamonds: Authentication
 
-Let's use passport to setup jwt based authentication. Two routes were defined to demonstrate the use case:
+Let's use passport to setup jwt based authentication.
+
+#### :rocket: Routes
+
+Two routes were defined to demonstrate the use case:
 
 | Route             | Description                   | Documentation                                                                           |
 | ----------------- | ----------------------------- | --------------------------------------------------------------------------------------- |
 | POST /user/login  | The login route               | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_login)      |
 | GET /user/profile | Logged user profile retrieval | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_getProfile) |
 
+#### :books: Mock data
+
 We have two users in database to play with the routes:
 
 - alice@cool.org / alice
 - bob@cool.org / bob
 
-:white_check_mark: Tests: e2e, controllers, services, local passport strategy.
+#### 🧪 Tests
+
+- :white_check_mark: e2e
+- :white_check_mark: controllers
+- :white_check_mark: services
+- :white_check_mark: local passport strategy

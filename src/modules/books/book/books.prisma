@@ -1,0 +1,9 @@
+model Book {
+   id              Int    @id @default(autoincrement())
+   idAuthor        Int
+   idCategory      Int
+   name            String @unique
+   publicationDate Int?
+
+   createdAt DateTime @default(now())
+}

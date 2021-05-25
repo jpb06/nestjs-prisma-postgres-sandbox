@@ -1,17 +1,8 @@
 import { Request as ExpressRequest } from 'express';
 
+import { ApiRoute } from '@decorators/api-route';
 import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiCreatedResponse,
-  ApiInternalServerErrorResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiTags,
-  ApiUnauthorizedResponse,
-} from '@nestjs/swagger';
-import { ApiResponseDto } from '@owntypes/dto/api-response.dto';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { User } from '@prisma/client';
 
 import { AuthService } from '../auth/auth.service';
@@ -22,28 +13,17 @@ import { LoggedUserDto } from './dto/logged-user.dto';
 import { LoginDto } from './dto/login.dto';
 
 @Controller('user')
-@ApiTags('users')
+@ApiTags('Users')
 export class UsersController {
   constructor(private readonly authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  @ApiOperation({
+  @ApiBody({ description: 'The user credentials', type: LoginDto })
+  @ApiRoute({
     summary: 'Login route',
     description: 'The login route',
-  })
-  @ApiBody({ description: 'The user credentials', type: LoginDto })
-  @ApiCreatedResponse({
-    description: 'Authentication succeeded',
-    type: LoggedUserDto,
-  })
-  @ApiUnauthorizedResponse({
-    description: 'Authentication failure',
-    type: ApiResponseDto,
-  })
-  @ApiInternalServerErrorResponse({
-    description: 'Internal server error',
-    type: ApiResponseDto,
+    created: { type: LoggedUserDto, description: 'Authentication succeeded' },
   })
   async login(
     @Request() req: ExpressRequest & { user: User },
@@ -54,22 +34,11 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   @ApiBearerAuth()
-  @ApiOperation({
+  @ApiRoute({
     summary: 'Logged user profile',
     description:
       'Retrieves the logged user profile from the jwt bearer token provided',
-  })
-  @ApiOkResponse({
-    description: 'Logged user profile',
-    type: JwtPayloadDto,
-  })
-  @ApiUnauthorizedResponse({
-    description: 'Missing, invalid or expired token',
-    type: ApiResponseDto,
-  })
-  @ApiInternalServerErrorResponse({
-    description: 'Internal server error',
-    type: ApiResponseDto,
+    ok: { description: 'Logged user profile', type: JwtPayloadDto },
   })
   getProfile(
     @Request() req: ExpressRequest & { user: JwtPayloadDto },

@@ -3,8 +3,8 @@
     "allowJs": false,
     "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
     "declaration": true,
+    "baseUrl": "src",
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -12,6 +12,7 @@
     "incremental": true,
     "isolatedModules": true,
     "module": "commonjs",
+    "moduleResolution": "Node",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -26,8 +27,11 @@
     "sourceMap": true,
     "outDir": "./dist",
     "paths": {
-      "@tests/*": ["tests-related/*"],
-      "@owntypes/*": ["types/*"]
+      "@tests/*": ["./tests-related/*"],
+      "@owntypes/*": ["./types/*"],
+      "@modules/*": ["./modules/*"],
+      "@database/*": ["./modules/database/*"],
+      "@decorators/*": ["./decorators/*"]
     }
   }
 }

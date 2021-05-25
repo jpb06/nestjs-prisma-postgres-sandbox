@@ -3,12 +3,12 @@ import { mockDeep } from 'jest-mock-extended';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 
+import { DatabaseService } from '@database/database.service';
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
-import { mockedUser, mockedUsers } from '@tests/mock-data/users.mock-data';
+import { loggedUser, mockedUser } from '@tests/mock-data/users.mock-data';
 
-import { DatabaseService } from '../../database/database.service';
 import { UsersModule } from './users.module';
 
 describe('UsersController (e2e)', () => {
@@ -30,13 +30,13 @@ describe('UsersController (e2e)', () => {
   it('POST /user/login', async (done) => {
     const password = await bcrypt.hash('pwd', 11);
     dbMock.user.findFirst.mockResolvedValueOnce({
-      ...mockedUsers[0],
+      ...loggedUser,
       password,
     });
 
     request(app.getHttpServer())
       .post('/user/login')
-      .send({ username: mockedUsers[0].email, password: 'pwd' })
+      .send({ username: loggedUser.email, password: 'pwd' })
       .expect(201)
       .end((err, res) => {
         if (err) {
