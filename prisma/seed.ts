@@ -5,7 +5,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const seed = async () => {
-  const alice = await prisma.user.upsert({
+  await prisma.user.upsert({
     where: { email: 'alice@cool.org' },
     update: {},
     create: {
@@ -16,7 +16,7 @@ export const seed = async () => {
     },
   });
 
-  const bob = await prisma.user.upsert({
+  await prisma.user.upsert({
     where: { email: 'bob@cool.org' },
     update: {},
     create: {
@@ -27,7 +27,53 @@ export const seed = async () => {
     },
   });
 
-  console.log({ alice, bob });
+  await prisma.author.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      name: 'Dan Simmons',
+    },
+  });
+  await prisma.author.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      name: 'Alexandre Dumas',
+    },
+  });
+
+  await prisma.book.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      idAuthor: 1,
+      idCategory: 1,
+      name: 'Hyperion',
+      publicationDate: 1989,
+    },
+  });
+  await prisma.book.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      idAuthor: 2,
+      idCategory: 2,
+      name: 'The three musketeers',
+      publicationDate: 1844,
+    },
+  });
+  await prisma.book.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
+      idAuthor: 1,
+      idCategory: 1,
+      name: 'Ilium',
+      publicationDate: 2004,
+    },
+  });
+
+  console.log('Database seeded');
   process.exit(0);
 };
 seed();
