@@ -91,21 +91,6 @@ describe('Books service', () => {
     expect(result).toStrictEqual(mockedBooks);
   });
 
-  it('should get a book by its name', async () => {
-    const name = 'Hyperion';
-
-    dbMock.book.findFirst.mockResolvedValueOnce(mockedBook);
-
-    const result = await service.getByName(name);
-
-    expect(dbMock.book.findFirst).toHaveBeenCalledWith({
-      where: {
-        name,
-      },
-    });
-    expect(result).toStrictEqual(mockedBook);
-  });
-
   it('should get a book by its id', async () => {
     const id = 1;
 

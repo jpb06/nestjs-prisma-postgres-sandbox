@@ -13,6 +13,8 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+import { BooksService } from '../book/books.service';
+import { PersistedBookDto } from '../book/dto/persisted-book.dto';
 import { AuthorsService } from './authors.service';
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { PersistedAuthorDto } from './dto/persisted-author.dto';
@@ -23,7 +25,10 @@ import { UpdateAuthorDto } from './dto/update-author.dto';
 @ApiTags('authors')
 @ApiBearerAuth()
 export class AuthorsController {
-  constructor(private readonly authorsService: AuthorsService) {}
+  constructor(
+    private readonly authorsService: AuthorsService,
+    private readonly booksService: BooksService,
+  ) {}
 
   @Get()
   @ApiRoute({
@@ -74,5 +79,22 @@ export class AuthorsController {
     @Param('id', new ParseIntPipe()) id: number,
   ): Promise<PersistedAuthorDto> {
     return this.authorsService.deleteById(id);
+  }
+
+  @Get(':id/books')
+  @ApiRoute({
+    summary: "Gets the author's books",
+    description: "Retrieves the author's books",
+    ok: {
+      type: [PersistedBookDto],
+      description: 'The books written by that author',
+    },
+    badRequest: {},
+  })
+  @ApiTags('authors', 'Books')
+  async getAuthorBooks(
+    @Param('id', new ParseIntPipe()) id: number,
+  ): Promise<Array<PersistedBookDto>> {
+    return this.booksService.getByAuthorId(id);
   }
 }

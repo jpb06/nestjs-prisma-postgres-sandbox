@@ -9,5 +9,6 @@ import { BooksService } from './books.service';
   imports: [DatabaseModule, AuthModule],
   controllers: [BooksController],
   providers: [BooksService],
+  exports: [BooksService],
 })
 export class BooksModule {}

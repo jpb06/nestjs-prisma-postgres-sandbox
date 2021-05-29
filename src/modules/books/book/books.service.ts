@@ -44,18 +44,18 @@ export class BooksService {
     return this.db.book.findMany();
   }
 
-  async getByName(name: string): Promise<Book | null> {
-    return this.db.book.findFirst({
-      where: {
-        name,
-      },
-    });
-  }
-
   async getById(id: number): Promise<Book | null> {
     return this.db.book.findFirst({
       where: {
         id,
+      },
+    });
+  }
+
+  async getByAuthorId(id: number): Promise<Array<Book>> {
+    return this.db.book.findMany({
+      where: {
+        idAuthor: id,
       },
     });
   }
