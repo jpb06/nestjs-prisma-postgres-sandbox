@@ -2,12 +2,16 @@ import { DatabaseService } from '@database/database.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from '@prisma/client';
 
+import { AuthorsService } from '../author/authors.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BooksService {
-  constructor(private db: DatabaseService) {}
+  constructor(
+    private db: DatabaseService,
+    private authorsService: AuthorsService,
+  ) {}
 
   async create(book: CreateBookDto): Promise<Book> {
     return this.db.book.create({
@@ -53,6 +57,11 @@ export class BooksService {
   }
 
   async getByAuthorId(id: number): Promise<Array<Book>> {
+    const author = await this.authorsService.getById(id);
+    if (!author) {
+      throw new NotFoundException();
+    }
+
     return this.db.book.findMany({
       where: {
         idAuthor: id,

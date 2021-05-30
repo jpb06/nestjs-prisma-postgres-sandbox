@@ -4,6 +4,7 @@ import { DatabaseService } from '@database/database.service';
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
+import { mockedAuthor } from '@tests/mock-data/authors.mock-data';
 import {
   mockedBook,
   mockedBooks,
@@ -11,6 +12,7 @@ import {
   newMockedBook,
 } from '@tests/mock-data/books.mock-data';
 
+import { AuthorsService } from '../author/authors.service';
 import { BooksService } from './books.service';
 
 describe('Books service', () => {
@@ -21,6 +23,7 @@ describe('Books service', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         BooksService,
+        AuthorsService,
         {
           provide: DatabaseService,
           useValue: dbMock,
@@ -106,9 +109,18 @@ describe('Books service', () => {
     expect(result).toStrictEqual(mockedBook);
   });
 
+  it('should throw a not found error if author does not exist', async () => {
+    dbMock.author.findFirst.mockResolvedValueOnce(null);
+
+    expect(service.getByAuthorId(1)).rejects.toThrowError(
+      new NotFoundException(),
+    );
+  });
+
   it('should get books by their author id', async () => {
     const id = 1;
 
+    dbMock.author.findFirst.mockResolvedValueOnce(mockedAuthor);
     dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
 
     const result = await service.getByAuthorId(id);

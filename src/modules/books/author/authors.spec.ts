@@ -10,6 +10,7 @@ import {
   mockedAuthor,
   mockedAuthors,
 } from '@tests/mock-data/authors.mock-data';
+import { mockedBooks } from '@tests/mock-data/books.mock-data';
 import { asDateString } from '@tests/util/as.date.string';
 
 import { AuthorsModule } from './authors.module';
@@ -146,6 +147,34 @@ describe('AuthorsController (e2e)', () => {
         .auth(token, { type: 'bearer' })
         .send()
         .expect(200, asDateString(mockedAuthor), done);
+    });
+  });
+
+  describe('GET /authors/{id}/books', () => {
+    it('should return 401 if not authenticated', async (done) => {
+      request(app.getHttpServer())
+        .get('/authors/1/books')
+        .send()
+        .expect(401, done);
+    });
+
+    it('should return 404 if the author does not exist', async (done) => {
+      request(app.getHttpServer())
+        .get('/authors/23/books')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(404, done);
+    });
+
+    it('should return books written by the chosen author', (done) => {
+      dbMock.author.findFirst.mockResolvedValueOnce(mockedAuthor);
+      dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
+
+      request(app.getHttpServer())
+        .get('/authors/1/books')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(200, mockedBooks.map(asDateString), done);
     });
   });
 });

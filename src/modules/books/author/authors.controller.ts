@@ -89,6 +89,7 @@ export class AuthorsController {
       type: [PersistedBookDto],
       description: 'The books written by that author',
     },
+    notFound: {},
     badRequest: {},
   })
   @ApiTags('authors', 'Books')
