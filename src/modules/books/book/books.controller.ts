@@ -1,4 +1,5 @@
 import { ApiRoute } from '@decorators/api-route';
+import { ForeignKeyExceptionFilter } from '@filters/fk-exception.filter';
 import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 import {
   Body,
@@ -9,6 +10,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseFilters,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -36,6 +38,7 @@ export class BooksController {
   }
 
   @Post()
+  @UseFilters(ForeignKeyExceptionFilter)
   @ApiRoute({
     summary: 'Create a book',
     description: 'Creates a new book',
@@ -47,6 +50,7 @@ export class BooksController {
   }
 
   @Put(':id')
+  @UseFilters(ForeignKeyExceptionFilter)
   @ApiRoute({
     summary: 'Update a book',
     description: 'Modifies a book',
