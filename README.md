@@ -126,16 +126,21 @@ Let's create CRUD routes to manage a list of books.
 
 #### :rocket: Routes
 
-| Route              | Description         | Documentation                                                                           |
-| ------------------ | ------------------- | --------------------------------------------------------------------------------------- |
-| GET /books         | Retrieves all books | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_getBooks)   |
-| POST /books        | Creates a book      | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_createBook) |
-| PUT /books/{id}    | Updates a book      | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_updateBook) |
-| DELETE /books/{id} | Deletes a book      | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_deleteBook) |
+| Route                   | Description                             | Documentation                                                                                 |
+| ----------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------- |
+| GET /books              | Retrieves all books                     | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_getBooks)         |
+| GET /authors            | Retrieves all authors                   | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_getAuthors)   |
+| GET /authors/{id}/books | Retrieves the book written by an author | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/AuthorsController_getAuthorBooks) |
+| POST /books             | Creates a book                          | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_createBook)       |
+| POST /authors           | Creates an author                       | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_createAuthor) |
+| PUT /books/{id}         | Updates a book                          | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_updateBook)       |
+| PUT /authors/{id}       | Updates an author                       | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_updateAuthor) |
+| DELETE /books/{id}      | Deletes a book                          | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_deleteBook)       |
+| DELETE /authors/{id}    | Deletes an author                       | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_deleteAuthor) |
 
 #### 🧪 Tests
 
 - :white_check_mark: e2e
-- :white_check_mark: controllers
+- :white_check_mark: controllers (turns out these are pretty much useless since we mock the service)
 - :white_check_mark: services
 - :white_check_mark: validation pipe

@@ -4,11 +4,15 @@ import { DatabaseService } from '@database/database.service';
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
+import { mockedAuthor } from '@tests/mock-data/authors.mock-data';
 import {
   mockedBook,
+  mockedBooks,
   mockedUpdatedBook,
+  newMockedBook,
 } from '@tests/mock-data/books.mock-data';
 
+import { AuthorsService } from '../author/authors.service';
 import { BooksService } from './books.service';
 
 describe('Books service', () => {
@@ -19,6 +23,7 @@ describe('Books service', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         BooksService,
+        AuthorsService,
         {
           provide: DatabaseService,
           useValue: dbMock,
@@ -30,25 +35,14 @@ describe('Books service', () => {
   });
 
   it('should create a book', async () => {
-    const newBook = {
-      idAuthor: 1,
-      idCategory: 1,
-      name: 'Hyperion',
-      publicationDate: 1989,
-    };
-    const persistedBook = {
-      id: 1,
-      createdAt: new Date(),
-      ...newBook,
-    };
-    dbMock.book.create.mockResolvedValueOnce(persistedBook);
+    dbMock.book.create.mockResolvedValueOnce(mockedBook);
 
-    const result = await service.create(newBook);
+    const result = await service.create(newMockedBook);
 
     expect(dbMock.book.create).toHaveBeenCalledWith({
-      data: newBook,
+      data: newMockedBook,
     });
-    expect(result).toStrictEqual(persistedBook);
+    expect(result).toStrictEqual(mockedBook);
   });
 
   it('should throw an error if the book to update does not exist', async () => {
@@ -93,43 +87,49 @@ describe('Books service', () => {
   });
 
   it('should get all books', async () => {
-    const books = [
-      {
-        id: 1,
-        idAuthor: 1,
-        idCategory: 1,
-        name: 'Hyperion',
-        publicationDate: 1989,
-        createdAt: new Date(),
-      },
-      {
-        id: 2,
-        idAuthor: 1,
-        idCategory: 1,
-        name: 'Yola',
-        publicationDate: 2020,
-        createdAt: new Date(),
-      },
-    ];
-    dbMock.book.findMany.mockResolvedValueOnce(books);
+    dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
 
     const result = await service.getAll();
 
-    expect(result).toStrictEqual(books);
+    expect(result).toStrictEqual(mockedBooks);
   });
 
-  it('should get a book by its name', async () => {
-    const name = 'Hyperion';
+  it('should get a book by its id', async () => {
+    const id = 1;
 
     dbMock.book.findFirst.mockResolvedValueOnce(mockedBook);
 
-    const result = await service.getByName(name);
+    const result = await service.getById(id);
 
     expect(dbMock.book.findFirst).toHaveBeenCalledWith({
       where: {
-        name,
+        id,
       },
     });
     expect(result).toStrictEqual(mockedBook);
+  });
+
+  it('should throw a not found error if author does not exist', async () => {
+    dbMock.author.findFirst.mockResolvedValueOnce(null);
+
+    expect(service.getByAuthorId(1)).rejects.toThrowError(
+      new NotFoundException(),
+    );
+  });
+
+  it('should get books by their author id', async () => {
+    const id = 1;
+
+    dbMock.author.findFirst.mockResolvedValueOnce(mockedAuthor);
+    dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
+
+    const result = await service.getByAuthorId(id);
+
+    expect(dbMock.book.findMany).toHaveBeenCalledWith({
+      where: {
+        idAuthor: id,
+      },
+    });
+    expect(result).toStrictEqual(mockedBooks);
   });
 });

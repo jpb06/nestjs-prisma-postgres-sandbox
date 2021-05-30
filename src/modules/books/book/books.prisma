@@ -1,9 +1,9 @@
 model Book {
-   id              Int    @id @default(autoincrement())
+   id              Int      @id @default(autoincrement())
    idAuthor        Int
    idCategory      Int
-   name            String @unique
+   name            String   @unique
    publicationDate Int?
-
-   createdAt DateTime @default(now())
+   author          Author   @relation(fields: [idAuthor], references: [id])
+   createdAt       DateTime @default(now())
 }

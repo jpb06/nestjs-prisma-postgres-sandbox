@@ -31,7 +31,8 @@
       "@owntypes/*": ["./types/*"],
       "@modules/*": ["./modules/*"],
       "@database/*": ["./modules/database/*"],
-      "@decorators/*": ["./decorators/*"]
+      "@decorators/*": ["./decorators/*"],
+      "@filters/*": ["./filters/*"]
     }
   }
 }
