@@ -27,49 +27,73 @@ describe('UsersController (e2e)', () => {
     await app.init();
   });
 
-  it('POST /user/login', async (done) => {
-    const password = await bcrypt.hash('pwd', 11);
-    dbMock.user.findFirst.mockResolvedValueOnce({
-      ...loggedUser,
-      password,
+  describe('POST /users/login', () => {
+    it('should return unauthorized if login has failed', async (done) => {
+      const password = await bcrypt.hash('pwd', 11);
+      dbMock.user.findFirst.mockResolvedValueOnce({
+        ...loggedUser,
+        password,
+      });
+
+      request(app.getHttpServer())
+        .post('/users/login')
+        .send({ username: loggedUser.email, password: 'yolo' })
+        .expect(401, done);
     });
 
-    request(app.getHttpServer())
-      .post('/user/login')
-      .send({ username: loggedUser.email, password: 'pwd' })
-      .expect(201)
-      .end((err, res) => {
-        if (err) {
-          done.fail();
-        }
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            ...mockedUser,
-          }),
-        );
-        done();
+    it('should log the user', async (done) => {
+      const password = await bcrypt.hash('pwd', 11);
+      dbMock.user.findFirst.mockResolvedValueOnce({
+        ...loggedUser,
+        password,
       });
+
+      request(app.getHttpServer())
+        .post('/users/login')
+        .send({ username: loggedUser.email, password: 'pwd' })
+        .expect(201)
+        .end((err, res) => {
+          if (err) {
+            done.fail();
+          }
+          expect(res.body).toEqual(
+            expect.objectContaining({
+              ...mockedUser,
+            }),
+          );
+          done();
+        });
+    });
   });
 
-  it('GET /user/profile', async (done) => {
-    const payload = { cool: 'yolo' };
-    const token = jwt.sign(payload, process.env.JWT_SECRET || '');
+  describe('GET /users/profile', () => {
+    it('return authorized if not logged', async (done) => {
+      request(app.getHttpServer())
+        .get('/users/profile')
+        .send()
+        .expect(401, done);
+    });
 
-    request(app.getHttpServer())
-      .get('/user/profile')
-      .auth(token, { type: 'bearer' })
-      .send()
-      .expect(200)
-      .end((err, res) => {
-        if (err) {
-          done.fail();
-        }
-        expect(res.body).toEqual(
-          expect.objectContaining({
-            ...payload,
-          }),
-        );
-        done();
-      });
+    it('return the user profile', async (done) => {
+      const payload = { cool: 'yolo' };
+      const token = jwt.sign(payload, process.env.JWT_SECRET || '');
+
+      request(app.getHttpServer())
+        .get('/users/profile')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            done.fail();
+          }
+          expect(res.body).toEqual(
+            expect.objectContaining({
+              ...payload,
+            }),
+          );
+          done();
+        });
+    });
   });
 });
