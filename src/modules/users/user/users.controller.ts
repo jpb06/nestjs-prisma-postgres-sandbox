@@ -12,8 +12,8 @@ import { LocalAuthGuard } from '../auth/guards/local.auth-guard';
 import { LoggedUserDto } from './dto/logged-user.dto';
 import { LoginDto } from './dto/login.dto';
 
-@Controller('user')
-@ApiTags('Users')
+@Controller('users')
+@ApiTags('auth-users')
 export class UsersController {
   constructor(private readonly authService: AuthService) {}
 

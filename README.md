@@ -101,10 +101,10 @@ Let's use passport to setup jwt based authentication.
 
 Two routes were defined to demonstrate the use case:
 
-| Route             | Description                   | Documentation                                                                           |
-| ----------------- | ----------------------------- | --------------------------------------------------------------------------------------- |
-| POST /user/login  | The login route               | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_login)      |
-| GET /user/profile | Logged user profile retrieval | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_getProfile) |
+| Route              | Description                   | Documentation                                                                           |
+| ------------------ | ----------------------------- | --------------------------------------------------------------------------------------- |
+| POST /users/login  | The login route               | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_login)      |
+| GET /users/profile | Logged user profile retrieval | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_getProfile) |
 
 #### :books: Mock data
 
