@@ -1,4 +1,5 @@
 import { ApiRoute } from '@decorators/api-route';
+import { ForeignKeyDeletionExceptionFilter } from '@filters/fk-deletion-exception.filter';
 import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 import {
   Body,
@@ -9,6 +10,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseFilters,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -22,7 +24,7 @@ import { UpdateAuthorDto } from './dto/update-author.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('authors')
-@ApiTags('authors')
+@ApiTags('crud-authors')
 @ApiBearerAuth()
 export class AuthorsController {
   constructor(
@@ -69,6 +71,7 @@ export class AuthorsController {
   }
 
   @Delete(':id')
+  @UseFilters(ForeignKeyDeletionExceptionFilter)
   @ApiRoute({
     summary: 'Delete an author',
     description: 'Removes an author',
@@ -92,7 +95,7 @@ export class AuthorsController {
     notFound: {},
     badRequest: {},
   })
-  @ApiTags('authors', 'Books')
+  @ApiTags('crud-authors', 'crud-books')
   async getAuthorBooks(
     @Param('id', new ParseIntPipe()) id: number,
   ): Promise<Array<PersistedBookDto>> {
