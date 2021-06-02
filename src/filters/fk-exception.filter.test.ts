@@ -13,7 +13,7 @@ describe('ForeignKeyException filter', () => {
 
   beforeEach(() => jest.clearAllMocks());
 
-  it('should call base exception catch function the error is not related with fks', () => {
+  it('should call base exception catch function if the error is unrelated', () => {
     const exception = new InternalServerErrorException();
 
     const filter = new ForeignKeyExceptionFilter();
@@ -23,9 +23,10 @@ describe('ForeignKeyException filter', () => {
   });
 
   it('should call base exception catch function when message is not relevant', () => {
-    const exception = new Error(
-      'Foreign key constraint failed on the field: `yolo`',
-    );
+    const exception = {
+      message: 'Foreign key constraint failed on the field: `yolo`',
+      code: 'P2003',
+    };
 
     const filter = new ForeignKeyExceptionFilter();
     filter.catch(exception, argumentsHostMock);
@@ -34,19 +35,30 @@ describe('ForeignKeyException filter', () => {
   });
 
   it('should reply with a bad request response', () => {
-    const exception = new Error(
-      'Foreign key constraint failed on the field: `yolo_cool_fkey blabla`',
-    );
+    const exception = {
+      message: 'Oh no!',
+      meta: 'yolo_cool_fkey blabla',
+      code: 'P2003',
+    };
+    const statusMock = jest.fn().mockReturnThis();
+    const jsonMock = jest.fn();
     argumentsHostMock.switchToHttp.mockReturnValue({
       getResponse: jest.fn().mockReturnValueOnce({
-        status: jest.fn().mockReturnThis(),
-        json: jest.fn(),
+        status: statusMock,
+        json: jsonMock,
       }),
     } as unknown as HttpArgumentsHost);
 
     const filter = new ForeignKeyExceptionFilter();
     filter.catch(exception, argumentsHostMock);
 
-    expect(BaseExceptionFilter).toHaveBeenCalledTimes(1);
+    expect(statusMock).toHaveBeenCalledTimes(1);
+    expect(statusMock).toHaveBeenCalledWith(400);
+    expect(jsonMock).toHaveBeenCalledTimes(1);
+    expect(jsonMock).toHaveBeenCalledWith({
+      statusCode: 400,
+      message: [`Invalid value for yolo.cool`],
+      error: 'Foreign key constraint violation',
+    });
   });
 });
