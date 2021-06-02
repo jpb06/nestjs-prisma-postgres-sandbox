@@ -18,14 +18,14 @@ describe('BooksController (e2e)', () => {
   const token = jwt.sign(payload, process.env.JWT_SECRET || '');
 
   beforeEach(async () => {
-    const usersModule: TestingModule = await Test.createTestingModule({
+    const module: TestingModule = await Test.createTestingModule({
       imports: [BooksModule],
     })
       .overrideProvider(DatabaseService)
       .useValue(dbMock)
       .compile();
 
-    app = usersModule.createNestApplication();
+    app = module.createNestApplication();
     app.useGlobalPipes(new ValidationPipe());
     await app.init();
   });
