@@ -42,6 +42,21 @@ export const seed = async () => {
     },
   });
 
+  await prisma.category.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      name: 'Science-fiction',
+    },
+  });
+  await prisma.category.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      name: 'Adventure',
+    },
+  });
+
   await prisma.book.upsert({
     where: { id: 1 },
     update: {},
