@@ -22,7 +22,7 @@ import { UpdateBookDto } from './dto/update-book.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('books')
-@ApiTags('Books')
+@ApiTags('crud-books')
 @ApiBearerAuth()
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
