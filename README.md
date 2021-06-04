@@ -123,6 +123,7 @@ We have two users in database to play with the routes:
 ### :diamonds: CRUD
 
 Let's create CRUD routes to manage a list of books.
+We want to make sure to give a proper feedback when foreign keys violations do occur (when we try to delete an entry whose key is referenced in another table or when we try to update an entry with a foreign key that does not exist). Let's use filters for that!
 
 #### :rocket: Routes
 
