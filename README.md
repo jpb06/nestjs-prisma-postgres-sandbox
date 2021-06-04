@@ -144,3 +144,4 @@ Let's create CRUD routes to manage a list of books.
 - :white_check_mark: controllers (turns out these are pretty much useless since we mock the service)
 - :white_check_mark: services
 - :white_check_mark: validation pipe
+- :white_check_mark: filters
