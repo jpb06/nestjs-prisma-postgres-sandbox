@@ -35,146 +35,138 @@ describe('AuthorsController (e2e)', () => {
   });
 
   describe('GET /authors', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).get('/authors').send().expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).get('/authors').send().expect(401);
     });
 
-    it('should return authors', async (done) => {
+    it('should return authors', async () => {
       dbMock.author.findMany.mockResolvedValueOnce(mockedAuthors);
 
-      request(app.getHttpServer())
+      const { body } = await request(app.getHttpServer())
         .get('/authors')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200)
-        .end((err, res) => {
-          if (err) {
-            done.fail();
-          }
-          expect(res.body).toStrictEqual(
-            mockedAuthors.map((el) => asDateString(el)),
-          );
-          done();
-        });
+        .expect(200);
+      expect(body).toStrictEqual(mockedAuthors.map((el) => asDateString(el)));
     });
   });
 
   describe('POST /authors', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).post('/authors').send({}).expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).post('/authors').send({}).expect(401);
     });
 
-    it('should return 400 if input is invalid', async (done) => {
-      request(app.getHttpServer())
+    it('should return 400 if input is invalid', () => {
+      return request(app.getHttpServer())
         .post('/authors')
         .auth(token, { type: 'bearer' })
         .send({})
-        .expect(400, done);
+        .expect(400);
     });
 
-    it('should create an author', async (done) => {
+    it('should create an author', () => {
       dbMock.author.create.mockResolvedValueOnce(mockedAuthor);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .post('/authors')
         .auth(token, { type: 'bearer' })
         .send({
           name: 'yolo',
         })
-        .expect(201, asDateString(mockedAuthor), done);
+        .expect(201, asDateString(mockedAuthor));
     });
   });
 
   describe('PUT /authors/{id}', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).put('/authors/1').send().expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).put('/authors/1').send().expect(401);
     });
 
-    it('should return 400 if input is invalid', async (done) => {
-      request(app.getHttpServer())
+    it('should return 400 if input is invalid', () => {
+      return request(app.getHttpServer())
         .put('/authors/1')
         .auth(token, { type: 'bearer' })
         .send({})
-        .expect(400, done);
+        .expect(400);
     });
 
-    it('should return 404 if the author does not exist', async (done) => {
-      request(app.getHttpServer())
+    it('should return 404 if the author does not exist', () => {
+      return request(app.getHttpServer())
         .put('/authors/23')
         .auth(token, { type: 'bearer' })
         .send({
           name: 'yolo',
         })
-        .expect(404, done);
+        .expect(404);
     });
 
-    it('should update an author', (done) => {
+    it('should update an author', () => {
       dbMock.author.findFirst.mockResolvedValueOnce(mockedAuthor);
       dbMock.author.update.mockResolvedValueOnce(mockedAuthor);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .put('/authors/1')
         .auth(token, { type: 'bearer' })
         .send({
           name: 'yolo',
         })
-        .expect(200, asDateString(mockedAuthor), done);
+        .expect(200, asDateString(mockedAuthor));
     });
   });
 
   describe('DELETE /authors/{id}', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer())
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer())
         .delete('/authors/1')
         .send()
-        .expect(401, done);
+        .expect(401);
     });
 
-    it('should return 404 if the author does not exist', async (done) => {
-      request(app.getHttpServer())
+    it('should return 404 if the author does not exist', () => {
+      return request(app.getHttpServer())
         .delete('/authors/23')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(404, done);
+        .expect(404);
     });
 
-    it('should delete an author', (done) => {
+    it('should delete an author', () => {
       dbMock.author.findFirst.mockResolvedValueOnce(mockedAuthor);
       dbMock.author.delete.mockResolvedValueOnce(mockedAuthor);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .delete('/authors/1')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200, asDateString(mockedAuthor), done);
+        .expect(200, asDateString(mockedAuthor));
     });
   });
 
   describe('GET /authors/{id}/books', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer())
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer())
         .get('/authors/1/books')
         .send()
-        .expect(401, done);
+        .expect(401);
     });
 
-    it('should return 404 if the author does not exist', async (done) => {
-      request(app.getHttpServer())
+    it('should return 404 if the author does not exist', () => {
+      return request(app.getHttpServer())
         .get('/authors/23/books')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(404, done);
+        .expect(404);
     });
 
-    it('should return books written by the chosen author', (done) => {
+    it('should return books written by the chosen author', () => {
       dbMock.author.findFirst.mockResolvedValueOnce(mockedAuthor);
       dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .get('/authors/1/books')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200, mockedBooks.map(asDateString), done);
+        .expect(200, mockedBooks.map(asDateString));
     });
   });
 });

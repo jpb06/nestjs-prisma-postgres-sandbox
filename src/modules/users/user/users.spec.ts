@@ -28,72 +28,61 @@ describe('UsersController (e2e)', () => {
   });
 
   describe('POST /users/login', () => {
-    it('should return unauthorized if login has failed', async (done) => {
+    it('should return unauthorized if login has failed', async () => {
       const password = await bcrypt.hash('pwd', 11);
       dbMock.user.findFirst.mockResolvedValueOnce({
         ...loggedUser,
         password,
       });
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .post('/users/login')
         .send({ username: loggedUser.email, password: 'yolo' })
-        .expect(401, done);
+        .expect(401);
     });
 
-    it('should log the user', async (done) => {
+    it('should log the user', async () => {
       const password = await bcrypt.hash('pwd', 11);
       dbMock.user.findFirst.mockResolvedValueOnce({
         ...loggedUser,
         password,
       });
 
-      request(app.getHttpServer())
+      const { body } = await request(app.getHttpServer())
         .post('/users/login')
         .send({ username: loggedUser.email, password: 'pwd' })
-        .expect(201)
-        .end((err, res) => {
-          if (err) {
-            done.fail();
-          }
-          expect(res.body).toEqual(
-            expect.objectContaining({
-              ...mockedUser,
-            }),
-          );
-          done();
-        });
+        .expect(201);
+
+      expect(body).toEqual(
+        expect.objectContaining({
+          ...mockedUser,
+        }),
+      );
     });
   });
 
   describe('GET /users/profile', () => {
-    it('return authorized if not logged', async (done) => {
-      request(app.getHttpServer())
+    it('return authorized if not logged', () => {
+      return request(app.getHttpServer())
         .get('/users/profile')
         .send()
-        .expect(401, done);
+        .expect(401);
     });
 
-    it('return the user profile', async (done) => {
+    it('return the user profile', async () => {
       const payload = { cool: 'yolo' };
       const token = jwt.sign(payload, process.env.JWT_SECRET || '');
 
-      request(app.getHttpServer())
+      const { body } = await request(app.getHttpServer())
         .get('/users/profile')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200)
-        .end((err, res) => {
-          if (err) {
-            done.fail();
-          }
-          expect(res.body).toEqual(
-            expect.objectContaining({
-              ...payload,
-            }),
-          );
-          done();
-        });
+        .expect(200);
+      expect(body).toEqual(
+        expect.objectContaining({
+          ...payload,
+        }),
+      );
     });
   });
 });

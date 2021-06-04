@@ -34,124 +34,118 @@ describe('CategoriesController (e2e)', () => {
   });
 
   describe('GET /categories', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).get('/categories').send().expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).get('/categories').send().expect(401);
     });
 
-    it('should return categories', async (done) => {
+    it('should return categories', async () => {
       dbMock.category.findMany.mockResolvedValueOnce(mockedCategories);
 
-      request(app.getHttpServer())
+      const { body } = await request(app.getHttpServer())
         .get('/categories')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200)
-        .end((err, res) => {
-          if (err) {
-            done.fail();
-          }
-          expect(res.body).toStrictEqual(
-            mockedCategories.map((el) => asDateString(el)),
-          );
-          done();
-        });
+        .expect(200);
+      expect(body).toStrictEqual(
+        mockedCategories.map((el) => asDateString(el)),
+      );
     });
   });
 
   describe('POST /categories', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer())
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer())
         .post('/categories')
         .send({})
-        .expect(401, done);
+        .expect(401);
     });
 
-    it('should return 400 if input is invalid', async (done) => {
-      request(app.getHttpServer())
+    it('should return 400 if input is invalid', () => {
+      return request(app.getHttpServer())
         .post('/categories')
         .auth(token, { type: 'bearer' })
         .send({})
-        .expect(400, done);
+        .expect(400);
     });
 
-    it('should create a category', async (done) => {
+    it('should create a category', () => {
       dbMock.category.create.mockResolvedValueOnce(mockedCategory);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .post('/categories')
         .auth(token, { type: 'bearer' })
         .send({
           name: 'yolo',
         })
-        .expect(201, asDateString(mockedCategory), done);
+        .expect(201, asDateString(mockedCategory));
     });
   });
 
   describe('PUT /categories/{id}', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer())
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer())
         .put('/categories/1')
         .send()
-        .expect(401, done);
+        .expect(401);
     });
 
-    it('should return 400 if input is invalid', async (done) => {
-      request(app.getHttpServer())
+    it('should return 400 if input is invalid', () => {
+      return request(app.getHttpServer())
         .put('/categories/1')
         .auth(token, { type: 'bearer' })
         .send({})
-        .expect(400, done);
+        .expect(400);
     });
 
-    it('should return 404 if the category does not exist', async (done) => {
-      request(app.getHttpServer())
+    it('should return 404 if the category does not exist', () => {
+      return request(app.getHttpServer())
         .put('/categories/23')
         .auth(token, { type: 'bearer' })
         .send({
           name: 'yolo',
         })
-        .expect(404, done);
+        .expect(404);
     });
 
-    it('should update a category', (done) => {
+    it('should update a category', () => {
       dbMock.category.findFirst.mockResolvedValueOnce(mockedCategory);
       dbMock.category.update.mockResolvedValueOnce(mockedCategory);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .put('/categories/1')
         .auth(token, { type: 'bearer' })
         .send({
           name: 'yolo',
         })
-        .expect(200, asDateString(mockedCategory), done);
+        .expect(200, asDateString(mockedCategory));
     });
   });
 
   describe('DELETE /categories/{id}', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer())
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer())
         .delete('/categories/1')
         .send()
-        .expect(401, done);
+        .expect(401);
     });
 
-    it('should return 404 if the category does not exist', async (done) => {
-      request(app.getHttpServer())
+    it('should return 404 if the category does not exist', () => {
+      return request(app.getHttpServer())
         .delete('/categories/23')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(404, done);
+        .expect(404);
     });
 
-    it('should delete a category', (done) => {
+    it('should delete a category', () => {
       dbMock.category.findFirst.mockResolvedValueOnce(mockedCategory);
       dbMock.category.delete.mockResolvedValueOnce(mockedCategory);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .delete('/categories/1')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200, asDateString(mockedCategory), done);
+        .expect(200, asDateString(mockedCategory));
     });
   });
 });

@@ -31,47 +31,39 @@ describe('BooksController (e2e)', () => {
   });
 
   describe('GET /books', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).get('/books').send().expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).get('/books').send().expect(401);
     });
 
-    it('should return books', async (done) => {
+    it('should return books', async () => {
       dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
 
-      request(app.getHttpServer())
+      const { body } = await request(app.getHttpServer())
         .get('/books')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200)
-        .end((err, res) => {
-          if (err) {
-            done.fail();
-          }
-          expect(res.body).toStrictEqual(
-            mockedBooks.map((el) => asDateString(el)),
-          );
-          done();
-        });
+        .expect(200);
+      expect(body).toStrictEqual(mockedBooks.map((el) => asDateString(el)));
     });
   });
 
   describe('POST /books', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).post('/books').send({}).expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).post('/books').send({}).expect(401);
     });
 
-    it('should return 400 if input is invalid', async (done) => {
-      request(app.getHttpServer())
+    it('should return 400 if input is invalid', () => {
+      return request(app.getHttpServer())
         .post('/books')
         .auth(token, { type: 'bearer' })
         .send({})
-        .expect(400, done);
+        .expect(400);
     });
 
-    it('should create a book', async (done) => {
+    it('should create a book', () => {
       dbMock.book.create.mockResolvedValueOnce(mockedBook);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .post('/books')
         .auth(token, { type: 'bearer' })
         .send({
@@ -79,25 +71,25 @@ describe('BooksController (e2e)', () => {
           idCategory: 1,
           name: 'yolo',
         })
-        .expect(201, asDateString(mockedBook), done);
+        .expect(201, asDateString(mockedBook));
     });
   });
 
   describe('PUT /books/{id}', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).put('/books/1').send().expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).put('/books/1').send().expect(401);
     });
 
-    it('should return 400 if input is invalid', async (done) => {
-      request(app.getHttpServer())
+    it('should return 400 if input is invalid', () => {
+      return request(app.getHttpServer())
         .put('/books/1')
         .auth(token, { type: 'bearer' })
         .send({})
-        .expect(400, done);
+        .expect(400);
     });
 
-    it('should return 404 if the book does not exist', async (done) => {
-      request(app.getHttpServer())
+    it('should return 404 if the book does not exist', () => {
+      return request(app.getHttpServer())
         .put('/books/23')
         .auth(token, { type: 'bearer' })
         .send({
@@ -105,14 +97,14 @@ describe('BooksController (e2e)', () => {
           idCategory: 1,
           name: 'yolo',
         })
-        .expect(404, done);
+        .expect(404);
     });
 
-    it('should update a book', (done) => {
+    it('should update a book', () => {
       dbMock.book.findFirst.mockResolvedValueOnce(mockedBook);
       dbMock.book.update.mockResolvedValueOnce(mockedBook);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .put('/books/1')
         .auth(token, { type: 'bearer' })
         .send({
@@ -120,32 +112,32 @@ describe('BooksController (e2e)', () => {
           idCategory: 1,
           name: 'yolo',
         })
-        .expect(200, asDateString(mockedBook), done);
+        .expect(200, asDateString(mockedBook));
     });
   });
 
   describe('DELETE /books/{id}', () => {
-    it('should return 401 if not authenticated', async (done) => {
-      request(app.getHttpServer()).delete('/books/1').send().expect(401, done);
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).delete('/books/1').send().expect(401);
     });
 
-    it('should return 404 if the book does not exist', async (done) => {
-      request(app.getHttpServer())
+    it('should return 404 if the book does not exist', () => {
+      return request(app.getHttpServer())
         .delete('/books/23')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(404, done);
+        .expect(404);
     });
 
-    it('should delete a book', (done) => {
+    it('should delete a book', () => {
       dbMock.book.findFirst.mockResolvedValueOnce(mockedBook);
       dbMock.book.delete.mockResolvedValueOnce(mockedBook);
 
-      request(app.getHttpServer())
+      return request(app.getHttpServer())
         .delete('/books/1')
         .auth(token, { type: 'bearer' })
         .send()
-        .expect(200, asDateString(mockedBook), done);
+        .expect(200, asDateString(mockedBook));
     });
   });
 });
