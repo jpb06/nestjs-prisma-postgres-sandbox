@@ -46,6 +46,7 @@ export class BooksController {
     description:
       'Books can be filtered by a list of authors, using either one query param (idAuthors=1,2,3) or several (idAuthors=1&idAuthors=2)',
     ok: { type: [PersistedBookDto], description: 'The authors books' },
+    badRequest: {},
   })
   async getBooksBy(
     @Query(
