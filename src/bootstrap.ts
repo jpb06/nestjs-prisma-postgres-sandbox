@@ -6,7 +6,14 @@ import { AppModule } from './modules/app.module';
 
 export const bootstrap = async (): Promise<INestApplication> => {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      forbidUnknownValues: true,
+    }),
+  );
 
   const config = new DocumentBuilder()
     .addBearerAuth()
