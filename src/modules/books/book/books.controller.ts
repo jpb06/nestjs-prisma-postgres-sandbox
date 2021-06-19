@@ -1,3 +1,5 @@
+import { NumberArrayPipe } from 'pipes/number-array.pipe';
+
 import { ApiRoute } from '@decorators/api-route';
 import { ForeignKeyExceptionFilter } from '@filters/fk-exception.filter';
 import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
@@ -7,9 +9,11 @@ import {
   Delete,
   Get,
   Param,
+  ParseArrayPipe,
   ParseIntPipe,
   Post,
   Put,
+  Query,
   UseFilters,
   UseGuards,
 } from '@nestjs/common';
@@ -29,12 +33,33 @@ export class BooksController {
 
   @Get()
   @ApiRoute({
-    summary: 'Get all books',
-    description: 'Retrieves all the books',
-    ok: { type: [PersistedBookDto], description: 'The available books' },
+    summary: 'Retrieves books',
+    description: 'Gets all books',
+    ok: { type: [PersistedBookDto], description: 'The books' },
   })
   async getBooks(): Promise<Array<PersistedBookDto>> {
     return this.booksService.getAll();
+  }
+
+  @Get('by')
+  @ApiRoute({
+    summary: 'Retrieves books written by one or several authors',
+    description:
+      'Books can be filtered by a list of authors, using either one query param (idAuthors=1,2,3) or several (idAuthors=1&idAuthors=2)',
+    ok: { type: [PersistedBookDto], description: 'The authors books' },
+  })
+  async getBooksBy(
+    @Query(
+      'idAuthors',
+      new ParseArrayPipe({
+        items: Number,
+        separator: ',',
+      }),
+      new NumberArrayPipe(),
+    )
+    idAuthors: number[],
+  ): Promise<Array<PersistedBookDto>> {
+    return this.booksService.getBy(idAuthors);
   }
 
   @Post()

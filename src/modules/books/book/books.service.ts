@@ -68,4 +68,12 @@ export class BooksService {
       },
     });
   }
+
+  async getBy(idAuthors: Array<number>): Promise<Array<Book>> {
+    return this.db.book.findMany({
+      where: {
+        idAuthor: { in: idAuthors },
+      },
+    });
+  }
 }
