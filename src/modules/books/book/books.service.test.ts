@@ -132,4 +132,18 @@ describe('Books service', () => {
     });
     expect(result).toStrictEqual(mockedBooks);
   });
+
+  it('should get several authors books', async () => {
+    dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
+
+    const idAuthors = [1, 2];
+    const result = await service.getBy(idAuthors);
+
+    expect(dbMock.book.findMany).toHaveBeenCalledWith({
+      where: {
+        idAuthor: { in: idAuthors },
+      },
+    });
+    expect(result).toStrictEqual(mockedBooks);
+  });
 });

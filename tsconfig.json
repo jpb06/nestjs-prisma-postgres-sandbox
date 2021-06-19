@@ -32,7 +32,8 @@
       "@modules/*": ["./modules/*"],
       "@database/*": ["./modules/database/*"],
       "@decorators/*": ["./decorators/*"],
-      "@filters/*": ["./filters/*"]
+      "@filters/*": ["./filters/*"],
+      "@pipes/*": ["./pipes/*"]
     }
   }
 }
