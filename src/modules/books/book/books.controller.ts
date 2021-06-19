@@ -1,5 +1,3 @@
-import { NumberArrayPipe } from 'pipes/number-array.pipe';
-
 import { ApiRoute } from '@decorators/api-route';
 import { ForeignKeyExceptionFilter } from '@filters/fk-exception.filter';
 import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
@@ -18,6 +16,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { NumberArrayPipe } from '@pipes/number-array.pipe';
 
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
