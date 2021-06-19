@@ -32,6 +32,14 @@ describe('Books controller', () => {
     expect(result).toStrictEqual(mockedBooks);
   });
 
+  it('should just return books written by specified authors', async () => {
+    serviceMock.getBy.mockResolvedValueOnce(mockedBooks);
+
+    const result = await controller.getBooksBy([1, 2]);
+
+    expect(result).toStrictEqual(mockedBooks);
+  });
+
   it('should create a book', async () => {
     serviceMock.create.mockResolvedValueOnce(book);
 

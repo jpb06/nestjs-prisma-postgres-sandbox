@@ -47,6 +47,60 @@ describe('BooksController (e2e)', () => {
     });
   });
 
+  describe('GET /books/by', () => {
+    it('should return 401 if not authenticated', () => {
+      return request(app.getHttpServer()).get('/books/by').send().expect(401);
+    });
+
+    it('should return 400 if input is invalid (missing idAuthors)', async () => {
+      return request(app.getHttpServer())
+        .get('/books/by')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(400);
+    });
+
+    it('should return 400 if input is invalid (idAuthors !== Array of numbers) - aggregated query param', async () => {
+      return request(app.getHttpServer())
+        .get('/books/by?idAuthors=a,1')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(400);
+    });
+
+    it('should return 400 if input is invalid (idAuthors !== Array of numbers) - duplicated query params', async () => {
+      return request(app.getHttpServer())
+        .get('/books/by?idAuthors=a&idAuthors=1')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(400);
+    });
+
+    it('should return books - aggregated query param', async () => {
+      dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
+
+      const { body } = await request(app.getHttpServer())
+        .get('/books/by?idAuthors=1,2')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(200);
+
+      expect(body).toStrictEqual(mockedBooks.map((el) => asDateString(el)));
+    });
+
+    it('should return books - duplicated query params', async () => {
+      dbMock.book.findMany.mockResolvedValueOnce(mockedBooks);
+
+      const { body } = await request(app.getHttpServer())
+        .get('/books/by?idAuthors=1&idAuthors=2')
+        .auth(token, { type: 'bearer' })
+        .send()
+        .expect(200);
+
+      expect(body).toStrictEqual(mockedBooks.map((el) => asDateString(el)));
+    });
+  });
+
   describe('POST /books', () => {
     it('should return 401 if not authenticated', () => {
       return request(app.getHttpServer()).post('/books').send({}).expect(401);
