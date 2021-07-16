@@ -1,6 +1,7 @@
-import { DatabaseService } from '@modules/database/database.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Author } from '@prisma/client';
+
+import { DatabaseService } from '@modules/database/database.service';
 
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';

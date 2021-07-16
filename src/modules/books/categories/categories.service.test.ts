@@ -1,9 +1,9 @@
-import { mockDeep } from 'jest-mock-extended';
-
-import { DatabaseService } from '@database/database.service';
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaClient } from '@prisma/client';
+import { mockDeep } from 'jest-mock-extended';
+
+import { DatabaseService } from '@database/database.service';
 import {
   mockedCategories,
   mockedCategory,

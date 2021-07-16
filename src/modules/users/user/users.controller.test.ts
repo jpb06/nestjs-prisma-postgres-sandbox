@@ -1,8 +1,8 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { User } from '@prisma/client';
 import { Request as ExpressRequest } from 'express';
 import { mockDeep } from 'jest-mock-extended';
 
-import { Test, TestingModule } from '@nestjs/testing';
-import { User } from '@prisma/client';
 import {
   loggedUser,
   loggedUserJwtPayload,

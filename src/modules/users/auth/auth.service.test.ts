@@ -1,8 +1,8 @@
+import { JwtService } from '@nestjs/jwt';
+import { Test, TestingModule } from '@nestjs/testing';
 import bcrypt from 'bcrypt';
 import { mockDeep } from 'jest-mock-extended';
 
-import { JwtService } from '@nestjs/jwt';
-import { Test, TestingModule } from '@nestjs/testing';
 import { mockedUser } from '@tests/mock-data/users.mock-data';
 
 import { UsersService } from '../user/users.service';

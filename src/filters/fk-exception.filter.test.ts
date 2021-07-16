@@ -1,8 +1,7 @@
-import { mockDeep } from 'jest-mock-extended';
-
 import { ArgumentsHost, InternalServerErrorException } from '@nestjs/common';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces';
 import { BaseExceptionFilter } from '@nestjs/core';
+import { mockDeep } from 'jest-mock-extended';
 
 import { ForeignKeyExceptionFilter } from './fk-exception.filter';
 

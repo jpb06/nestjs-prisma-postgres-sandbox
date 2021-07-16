@@ -1,6 +1,7 @@
-import { DatabaseService } from '@modules/database/database.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Category } from '@prisma/client';
+
+import { DatabaseService } from '@modules/database/database.service';
 
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';

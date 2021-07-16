@@ -1,6 +1,5 @@
-import * as validator from 'class-validator';
-
 import { BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
+import * as validator from 'class-validator';
 
 @Injectable()
 export class NumberArrayPipe implements PipeTransform<Array<unknown>> {

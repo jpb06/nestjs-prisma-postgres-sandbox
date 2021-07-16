@@ -1,7 +1,7 @@
-import { mockDeep } from 'jest-mock-extended';
-
 import { UnauthorizedException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { mockDeep } from 'jest-mock-extended';
+
 import { mockedUser } from '@tests/mock-data/users.mock-data';
 
 import { AuthService } from '../auth.service';

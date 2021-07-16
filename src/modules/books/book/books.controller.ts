@@ -1,6 +1,3 @@
-import { ApiRoute } from '@decorators/api-route';
-import { ForeignKeyExceptionFilter } from '@filters/fk-exception.filter';
-import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 import {
   Body,
   Controller,
@@ -16,6 +13,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+
+import { ApiRoute } from '@decorators/api-route';
+import { ForeignKeyExceptionFilter } from '@filters/fk-exception.filter';
+import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 import { NumberArrayPipe } from '@pipes/number-array.pipe';
 
 import { BooksService } from './books.service';
