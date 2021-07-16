@@ -28,7 +28,7 @@
     "outDir": "./dist",
     "paths": {
       "@tests/*": ["./tests-related/*"],
-      "@owntypes/*": ["./types/*"],
+      "@type/*": ["./types/*"],
       "@modules/*": ["./modules/*"],
       "@database/*": ["./modules/database/*"],
       "@decorators/*": ["./decorators/*"],
