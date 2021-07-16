@@ -1,0 +1,51 @@
+parser: '@typescript-eslint/parser'
+
+parserOptions:
+  project: './tsconfig.json'
+  sourceType: 'module'
+
+plugins:
+  - '@typescript-eslint/eslint-plugin'
+  - prettier
+  - import
+
+root: true
+
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:prettier/recommended
+  - plugin:import/typescript
+
+env:
+  jest: true
+  node: true
+
+rules:
+  '@typescript-eslint/no-explicit-any': off
+  '@typescript-eslint/interface-name-prefix': off
+  '@typescript-eslint/explicit-function-return-type': off
+  '@typescript-eslint/explicit-module-boundary-types': off
+  import/no-unresolved: off
+  import/order:
+    - error
+    - newlines-between: always
+      groups:
+        - builtin
+        - external
+        - internal
+        - [parent, sibling, index]
+      alphabetize:
+        order: 'asc'
+      pathGroups:
+        - pattern: '{@tests/**,@type/**,@modules/**,@database/**,@decorators/**,@filters/**,@pipes/**}'
+          group: internal
+          position: before
+      pathGroupsExcludedImportTypes:
+        - builtin
+  no-console:
+    - error
+    - allow: [warn, error]
+  prettier/prettier:
+    - error
+    - endOfLine: auto
