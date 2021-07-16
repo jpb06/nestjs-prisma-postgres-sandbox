@@ -1,8 +1,8 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { PrismaClient } from '@prisma/client';
 import { mockDeep } from 'jest-mock-extended';
 
 import { DatabaseService } from '@database/database.service';
-import { Test, TestingModule } from '@nestjs/testing';
-import { PrismaClient } from '@prisma/client';
 import { loggedUser } from '@tests/mock-data/users.mock-data';
 
 import { UsersService } from './users.service';

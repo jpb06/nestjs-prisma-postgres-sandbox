@@ -1,6 +1,3 @@
-import { ApiRoute } from '@decorators/api-route';
-import { ForeignKeyDeletionExceptionFilter } from '@filters/fk-deletion-exception.filter';
-import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 import {
   Body,
   Controller,
@@ -14,6 +11,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+
+import { ApiRoute } from '@decorators/api-route';
+import { ForeignKeyDeletionExceptionFilter } from '@filters/fk-deletion-exception.filter';
+import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';

@@ -1,5 +1,6 @@
 import { INestApplication, Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+
 import { mockedPrismaConnect } from '@tests/spies/prisma-connect.spy';
 import { mockedPrismaDisconnect } from '@tests/spies/prisma-disconnect.spy';
 

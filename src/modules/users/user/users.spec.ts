@@ -1,12 +1,12 @@
+import { INestApplication } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
+import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import { mockDeep } from 'jest-mock-extended';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 
 import { DatabaseService } from '@database/database.service';
-import { INestApplication } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
-import { PrismaClient } from '@prisma/client';
 import { loggedUser, mockedUser } from '@tests/mock-data/users.mock-data';
 
 import { UsersModule } from './users.module';

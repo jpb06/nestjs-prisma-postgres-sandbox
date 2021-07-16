@@ -1,8 +1,8 @@
-import { Response } from 'express';
-
 import { ArgumentsHost, Catch } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
-import { PrismaException } from '@owntypes/prisma-exception.interface';
+import { Response } from 'express';
+
+import { PrismaException } from '@type/prisma-exception.interface';
 
 @Catch()
 export class ForeignKeyExceptionFilter extends BaseExceptionFilter {

@@ -1,9 +1,9 @@
-import { Request as ExpressRequest } from 'express';
-
-import { ApiRoute } from '@decorators/api-route';
 import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { User } from '@prisma/client';
+import { Request as ExpressRequest } from 'express';
+
+import { ApiRoute } from '@decorators/api-route';
 
 import { AuthService } from '../auth/auth.service';
 import { JwtPayloadDto } from '../auth/dto/jwt.payload.dto';

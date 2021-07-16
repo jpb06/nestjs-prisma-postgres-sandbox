@@ -1,7 +1,6 @@
-import { IsInt } from 'class-validator';
-
 import { BadRequestException } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
+import { IsInt } from 'class-validator';
 
 import { ValidationPipe } from './validation.pipe';
 

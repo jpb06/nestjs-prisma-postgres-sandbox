@@ -1,6 +1,7 @@
+import { forwardRef, Module } from '@nestjs/common';
+
 import { DatabaseModule } from '@database/database.module';
 import { AuthModule } from '@modules/users/auth/auth.module';
-import { forwardRef, Module } from '@nestjs/common';
 
 import { AuthorsModule } from '../author/authors.module';
 import { BooksController } from './books.controller';

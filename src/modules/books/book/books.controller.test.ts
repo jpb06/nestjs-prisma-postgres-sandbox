@@ -1,6 +1,6 @@
+import { Test, TestingModule } from '@nestjs/testing';
 import { mockDeep } from 'jest-mock-extended';
 
-import { Test, TestingModule } from '@nestjs/testing';
 import { mockedBooks, newMockedBook } from '@tests/mock-data/books.mock-data';
 
 import { BooksController } from './books.controller';
