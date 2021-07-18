@@ -42,4 +42,4 @@ jobs:
         run: yarn test:ci
 
       - name: Generating coverage badges
-        uses: jpb06/jest-badges-action@v1.6.1
+        uses: jpb06/jest-badges-action@v1.7.0
