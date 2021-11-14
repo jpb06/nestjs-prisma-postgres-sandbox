@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
+
 const {
   compilerOptions: { paths: tsconfigPaths },
 } = require('./tsconfig');
@@ -19,4 +20,9 @@ module.exports = {
   coverageDirectory: './coverage',
   testEnvironment: 'node',
   coverageReporters: ['json-summary', 'text', 'lcov'],
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
 };
