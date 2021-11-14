@@ -21,6 +21,7 @@
     "start:prod": "node dist/src/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
+    "test:leak": "yarn jest --max-workers=1 --no-cache",
     "test:watch": "jest --watch",
     "test:dev": "jest --watchAll --coverage",
     "test:e2e": "jest --watchAll --coverage .spec.ts",
