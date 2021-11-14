@@ -7,13 +7,13 @@ const {
 
 module.exports = {
   roots: ['<rootDir>/src/'],
+  logHeapUsage: true,
   moduleFileExtensions: ['js', 'json', 'ts'],
   moduleNameMapper: {
     ...pathsToModuleNameMapper(tsconfigPaths, { prefix: '<rootDir>/src' }),
   },
-  testRegex: '\\.(test|spec)\\.ts$',
   transform: {
-    '^.+\\.(t|j)s$': 'ts-jest',
+    '^.+\\.ts$': 'ts-jest',
   },
   collectCoverageFrom: ['**/*.ts'],
   coveragePathIgnorePatterns: ['/tests-related/', '.dto\\.ts'],
