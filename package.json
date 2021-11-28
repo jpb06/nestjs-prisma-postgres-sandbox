@@ -16,6 +16,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "dev": "nest start --watch",
+    "dev:db": "yarn prisma:merge && yarn prisma:gen && yarn prisma:seed",
     "docker": "docker-compose down && docker-compose up sandbox-postgres",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/src/main",
