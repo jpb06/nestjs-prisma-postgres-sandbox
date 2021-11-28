@@ -45,7 +45,7 @@ describe('Categories service', () => {
   it('should throw an error if the category to update does not exist', async () => {
     dbMock.category.findFirst.mockResolvedValueOnce(null);
 
-    expect(service.update(1, mockedUpdatedCategory)).rejects.toThrowError(
+    await expect(service.update(1, mockedUpdatedCategory)).rejects.toThrow(
       new NotFoundException(),
     );
   });
@@ -66,7 +66,9 @@ describe('Categories service', () => {
   it('should throw an error if the category to delete does not exist', async () => {
     dbMock.category.findFirst.mockResolvedValueOnce(null);
 
-    expect(service.deleteById(1)).rejects.toThrowError(new NotFoundException());
+    await expect(service.deleteById(1)).rejects.toThrow(
+      new NotFoundException(),
+    );
   });
 
   it('should delete a category', async () => {

@@ -3,7 +3,7 @@ import * as validator from 'class-validator';
 
 @Injectable()
 export class NumberArrayPipe implements PipeTransform<Array<unknown>> {
-  async transform(value: unknown) {
+  async transform(value: unknown): Promise<Array<unknown>> {
     if (!Array.isArray(value)) {
       throw new BadRequestException('Expecting an array');
     }

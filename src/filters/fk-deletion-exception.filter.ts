@@ -15,11 +15,10 @@ export class ForeignKeyDeletionExceptionFilter extends BaseExceptionFilter {
   catch(
     exception: PrismaException<PrismaDeletionErrorMeta>,
     host: ArgumentsHost,
-  ) {
+  ): void | Response<unknown, Record<string, unknown>> {
     if (exception.code !== 'P2014') {
       return super.catch(exception, host);
     }
-
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
 

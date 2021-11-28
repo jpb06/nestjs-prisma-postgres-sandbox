@@ -6,7 +6,10 @@ import { PrismaException } from '@type/prisma-exception.interface';
 
 @Catch()
 export class ForeignKeyExceptionFilter extends BaseExceptionFilter {
-  catch(exception: PrismaException<string>, host: ArgumentsHost) {
+  catch(
+    exception: PrismaException<string>,
+    host: ArgumentsHost,
+  ): void | Response<unknown, Record<string, unknown>> {
     if (exception.code !== 'P2003') {
       return super.catch(exception, host);
     }
