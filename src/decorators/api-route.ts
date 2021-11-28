@@ -22,6 +22,12 @@ interface DefaultResponsesInput {
   notFound?: { description?: string };
 }
 
+type ApiRouteOutput = <TFunction extends () => void, Y>(
+  target: object | TFunction,
+  propertyKey?: string | symbol | undefined,
+  descriptor?: TypedPropertyDescriptor<Y> | undefined,
+) => void;
+
 export const ApiRoute = ({
   summary,
   description,
@@ -29,7 +35,7 @@ export const ApiRoute = ({
   created,
   badRequest,
   notFound,
-}: DefaultResponsesInput) => {
+}: DefaultResponsesInput): ApiRouteOutput => {
   const decorators = [
     ApiOperation({
       summary,

@@ -1,7 +1,12 @@
 # Sandbox
 
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/jpb06/nestjs-prisma-postgres-sandbox)
-![Code quality](https://img.shields.io/codefactor/grade/github/jpb06/nestjs-prisma-postgres-sandbox?logo=codefactor)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=security_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=code_smells)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=coverage)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 ![Coverage](./badges/coverage-global%20coverage.svg)
 ![Github workflow](https://img.shields.io/github/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/checks?label=last%20workflow&logo=github-actions)
 ![Last deployment](https://img.shields.io/github/deployments/jpb06/nestjs-prisma-postgres-sandbox/nestjs-prisma-postgres?label=last%20deployment&logo=heroku)
@@ -30,11 +35,11 @@ So let's talk about the stack (pushing on an open door here, but hey):
 
 ## :zap: Guidelines
 
-### :diamonds: Schema splitting
+### 🔶 Schema splitting
 
 We do not want a huge prisma schema. We want to isolate each model (table or set of tables) in its own file.
 
-### :diamonds: Well documented routes
+### 🔶 Well documented routes
 
 Let's have a swagger documenting properly exposed routes, that is mainly for each route:
 
@@ -42,51 +47,57 @@ Let's have a swagger documenting properly exposed routes, that is mainly for eac
 - the list of possible responses.
 - a definition of the inputs and outputs.
 
-### :diamonds: Full testing coverage
+### 🔶 Full testing coverage
 
 We want to test everything to learn how to properly test, and to face every single difficulty that comes with testing. We will at very least do end to end using superagent, controllers testing, service testing.
 
-### :diamonds: No testing against the database
+### 🔶 No testing against the database
 
 All tests should run without any interaction with a database.
 
 ## :zap: Usage
 
-### :diamonds: run locally
+### 🔶 run locally
 
-:point_down: Since our prisma schemas are split within modules, we will have to merge them all in one file prisma can understand. Let's do just that:
+#### 👇 Since our prisma schemas are split within modules, we will have to merge them all in one file prisma can understand. Let's do just that:
 
 ```bash
 yarn prisma:merge
 ```
 
-:point_down: Now, we need to tell prisma to generate in node_modules the code actually allowing us to interact with the database:
+#### 👇 Now, we need to tell prisma to generate in node_modules the code actually allowing us to interact with the database:
 
 ```bash
 yarn prisma:gen
 ```
 
-:point_down: You will need docker and docker-compose to get the postgres database up and running. You can use this command to launch the database container:
+#### 👇 You will need docker and docker-compose to get the postgres database up and running. You can use this command to launch the database container:
 
 ```bash
-yarn dev:db
+yarn docker
 ```
 
-:point_down: Then, let's inject some data in our dev database using:
+#### 👇 Then, let's inject some data in our dev database using:
 
 ```bash
 yarn prisma:seed
 ```
 
-:point_down: We can now launch the backend in dev:
+#### 👇 We can now launch the backend in dev:
 
 ```bash
 yarn dev
 ```
 
-### :diamonds: test all the things
+#### 😵 You can do the merge, gen & seed steps all at once using the following command:
 
-:point_down: We can run all the tests and get a coverage report using the following:
+```bash
+yarn dev:db
+```
+
+### 🔶 test all the things
+
+🔶 We can run all the tests and get a coverage report using the following:
 
 ```bash
 yarn test:dev
@@ -94,7 +105,7 @@ yarn test:dev
 
 ## :zap: Subjects
 
-### :diamonds: Authentication
+### 🔶 Authentication
 
 Let's use passport to setup jwt based authentication.
 
@@ -121,7 +132,7 @@ We have two users in database to play with the routes:
 - :white_check_mark: services
 - :white_check_mark: local passport strategy
 
-### :diamonds: CRUD
+### 🔶 CRUD
 
 Let's create CRUD routes to manage a list of books.
 We want to make sure to give a proper feedback when foreign keys violations do occur (when we try to delete an entry whose key is referenced in another table or when we try to update an entry with a foreign key that does not exist). Let's use filters for that!

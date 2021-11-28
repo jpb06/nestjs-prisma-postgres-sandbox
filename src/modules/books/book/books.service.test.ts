@@ -48,7 +48,7 @@ describe('Books service', () => {
   it('should throw an error if the book to update does not exist', async () => {
     dbMock.book.findFirst.mockResolvedValueOnce(null);
 
-    expect(service.update(1, mockedUpdatedBook)).rejects.toThrowError(
+    await expect(service.update(1, mockedUpdatedBook)).rejects.toThrow(
       new NotFoundException(),
     );
   });
@@ -69,7 +69,9 @@ describe('Books service', () => {
   it('should throw an error if the book to delete does not exist', async () => {
     dbMock.book.findFirst.mockResolvedValueOnce(null);
 
-    expect(service.deleteById(1)).rejects.toThrowError(new NotFoundException());
+    await expect(service.deleteById(1)).rejects.toThrow(
+      new NotFoundException(),
+    );
   });
 
   it('should delete a book', async () => {
@@ -112,7 +114,7 @@ describe('Books service', () => {
   it('should throw a not found error if author does not exist', async () => {
     dbMock.author.findFirst.mockResolvedValueOnce(null);
 
-    expect(service.getByAuthorId(1)).rejects.toThrowError(
+    await expect(service.getByAuthorId(1)).rejects.toThrow(
       new NotFoundException(),
     );
   });

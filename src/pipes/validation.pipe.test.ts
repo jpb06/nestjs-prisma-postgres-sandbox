@@ -14,7 +14,7 @@ describe('Validation pipe', () => {
   const pipe = new ValidationPipe();
 
   it('should throw a bad request if validation failed', async () => {
-    expect(
+    await expect(
       pipe.transform(<MyDto>{}, {
         type: 'body',
         metatype: MyDto,

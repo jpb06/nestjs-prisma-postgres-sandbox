@@ -6,13 +6,13 @@ describe('Validation pipe', () => {
   const pipe = new NumberArrayPipe();
 
   it('should throw a bad request if not given an array', async () => {
-    expect(pipe.transform(23)).rejects.toThrow(
+    await expect(pipe.transform(23)).rejects.toThrow(
       new BadRequestException('Expecting an array'),
     );
   });
 
   it('should throw a bad request if not given an array will only numbers', async () => {
-    expect(pipe.transform([1, 2, 'b'])).rejects.toThrow(
+    await expect(pipe.transform([1, 2, 'b'])).rejects.toThrow(
       new BadRequestException('Expecting an array of numbers'),
     );
   });

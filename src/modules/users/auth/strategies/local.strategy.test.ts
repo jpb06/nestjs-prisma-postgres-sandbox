@@ -28,7 +28,7 @@ describe('LocalStrategy', () => {
   it('should throw an unauthorized exception', async () => {
     authServiceMock.validateUser.mockResolvedValueOnce(null);
 
-    expect(strategy.validate('cool@bro.com', 'yolo')).rejects.toThrowError(
+    await expect(strategy.validate('cool@bro.com', 'yolo')).rejects.toThrow(
       UnauthorizedException,
     );
   });

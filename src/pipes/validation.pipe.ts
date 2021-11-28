@@ -9,15 +9,20 @@ import { validate } from 'class-validator';
 
 @Injectable()
 export class ValidationPipe implements PipeTransform<unknown> {
-  async transform(value: unknown, { metatype }: ArgumentMetadata) {
+  async transform(
+    value: unknown,
+    { metatype }: ArgumentMetadata,
+  ): Promise<unknown> {
     if (!metatype || !this.toValidate(metatype)) {
       return value;
     }
+
     const object = plainToClass(metatype, value);
     const errors = await validate(object);
     if (errors.length > 0) {
       throw new BadRequestException('Validation failed');
     }
+
     return value;
   }
 
