@@ -1,3 +1,5 @@
 import { bootstrap } from './bootstrap';
 
-void bootstrap();
+void (async (): Promise<void> => {
+  await bootstrap();
+})();
