@@ -1,5 +1,10 @@
-name: checks
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+name: Main workflow
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -27,7 +32,7 @@ jobs:
           node-version: '16.x'
 
       - name: Setting yarn version
-        run: yarn policies set-version 1.22.10
+        run: yarn policies set-version 1.22.17
 
       - name: Install dependencies
         run: yarn install --prefer-offline
@@ -43,3 +48,9 @@ jobs:
 
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@v1.7.0
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
