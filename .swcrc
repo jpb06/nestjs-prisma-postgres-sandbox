@@ -9,7 +9,7 @@
       "legacyDecorator": true,
       "decoratorMetadata": true
     },
-    "target": "ES2020",
+    "target": "es2020",
     "keepClassNames": true
   },
   "module": {
