@@ -13,16 +13,11 @@ module.exports = {
     ...pathsToModuleNameMapper(tsconfigPaths, { prefix: '<rootDir>/src' }),
   },
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': '@swc/jest',
   },
   collectCoverageFrom: ['**/*.ts'],
   coveragePathIgnorePatterns: ['/tests-related/', '.dto\\.ts'],
   coverageDirectory: './coverage',
   testEnvironment: 'node',
   coverageReporters: ['json-summary', 'text', 'lcov'],
-  globals: {
-    'ts-jest': {
-      isolatedModules: true,
-    },
-  },
 };
