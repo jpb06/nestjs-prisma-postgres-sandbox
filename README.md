@@ -1,6 +1,6 @@
-# Sandbox
+# nestjs-prisma-postgres sandbox
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/jpb06/nestjs-prisma-postgres-sandbox)
+[![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://github.dev/jpb06/nestjs-prisma-postgres-sandbox)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=security_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
@@ -24,14 +24,14 @@ So let's talk about the stack (pushing on an open door here, but hey):
 
 | Package / techno             | Description                           | Documentation                                      |
 | ---------------------------- | ------------------------------------- | -------------------------------------------------- |
-| :heartpulse: typescript      | JS superset                           | https://www.typescriptlang.org/docs/               |
-| :smile_cat: Nestjs           | Our cats fetishists backend framework | https://docs.nestjs.com/                           |
-| :small_red_triangle: Prisma2 | The ORM                               | https://www.prisma.io/docs/                        |
-| :elephant: postgresql        | Relational database engine            | https://www.postgresql.org/docs/                   |
-| :bug: Jest                   | Tests library                         | https://jestjs.io/fr/docs/getting-started          |
-| 🧪 supertest                 | End to end testing helpers            | https://github.com/visionmedia/supertest           |
-| :pencil2: eslint             | Linter                                | https://eslint.org/docs/user-guide/getting-started |
-| :straight_ruler: prettier    | Formatter                             | https://prettier.io/docs/en/index.html             |
+| :heartpulse: typescript      | JS superset                           | <https://www.typescriptlang.org/docs/>               |
+| :smile_cat: Nestjs           | Our cats fetishists backend framework | <https://docs.nestjs.com/>                           |
+| :small_red_triangle: Prisma2 | The ORM                               | <https://www.prisma.io/docs/>                        |
+| :elephant: postgresql        | Relational database engine            | <https://www.postgresql.org/docs/>                   |
+| :bug: Jest                   | Tests library                         | <https://jestjs.io/fr/docs/getting-started>          |
+| 🧪 supertest                 | End to end testing helpers            | <https://github.com/visionmedia/supertest>           |
+| :pencil2: eslint             | Linter                                | <https://eslint.org/docs/user-guide/getting-started> |
+| :straight_ruler: prettier    | Formatter                             | <https://prettier.io/docs/en/index.html>             |
 
 ## :zap: Guidelines
 
@@ -59,37 +59,37 @@ All tests should run without any interaction with a database.
 
 ### 🔶 run locally
 
-#### 👇 Since our prisma schemas are split within modules, we will have to merge them all in one file prisma can understand. Let's do just that:
+#### 👇 Since our prisma schemas are split within modules, we will have to merge them all in one file prisma can understand. Let's do just that
 
 ```bash
 yarn prisma:merge
 ```
 
-#### 👇 Now, we need to tell prisma to generate in node_modules the code actually allowing us to interact with the database:
+#### 👇 Now, we need to tell prisma to generate in node_modules the code actually allowing us to interact with the database
 
 ```bash
 yarn prisma:gen
 ```
 
-#### 👇 You will need docker and docker-compose to get the postgres database up and running. You can use this command to launch the database container:
+#### 👇 You will need docker and docker-compose to get the postgres database up and running. You can use this command to launch the database container
 
 ```bash
 yarn docker
 ```
 
-#### 👇 Then, let's inject some data in our dev database using:
+#### 👇 Then, let's inject some data in our dev database using
 
 ```bash
 yarn prisma:seed
 ```
 
-#### 👇 We can now launch the backend in dev:
+#### 👇 We can now launch the backend in dev
 
 ```bash
 yarn dev
 ```
 
-#### 😵 You can do the merge, gen & seed steps all at once using the following command:
+#### 😵 You can do the merge, gen & seed steps all at once using the following command
 
 ```bash
 yarn dev:db
