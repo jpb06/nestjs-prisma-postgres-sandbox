@@ -12,28 +12,19 @@
 ![Last deployment](https://img.shields.io/github/deployments/jpb06/nestjs-prisma-postgres-sandbox/nestjs-prisma-postgres?label=last%20deployment&logo=heroku)
 ![Last commit](https://img.shields.io/github/last-commit/jpb06/nestjs-prisma-postgres-sandbox?logo=git)
 
-You can find the [deployed app here](https://nestjs-prisma-postgres.herokuapp.com).
+<!-- readme-package-icons start -->
 
-## :zap: What is this repo about?
+<p align="left"><a href="https://docs.github.com/en/actions" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/github-actions.svg" /></a>&nbsp;<a href="https://www.typescriptlang.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" /></a>&nbsp;<a href="https://nodejs.org/en/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /></a>&nbsp;<a href="https://yarnpkg.com/api/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /></a>&nbsp;<a href="https://docs.docker.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" /></a>&nbsp;<a href="https://eslint.org/docs/latest/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg" /></a>&nbsp;<a href="https://jestjs.io/docs/getting-started" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" /></a>&nbsp;<a href="https://jwt.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/jwt.png" /></a>&nbsp;<a href="https://docs.nestjs.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" /></a>&nbsp;<a href="https://www.passportjs.org/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/passport.svg" /></a>&nbsp;<a href="https://prettier.io/docs/en/index.html" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prettier.png" /></a>&nbsp;<a href="https://www.prisma.io/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prisma.svg" /></a>&nbsp;<a href="https://rxjs.dev/guide/overview" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/rxjs.png" /></a>&nbsp;<a href="https://swagger.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swagger.png" /></a>&nbsp;<a href="https://swc.rs/docs/getting-started" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swc.svg" /></a>&nbsp;<a href="https://github.com/typestack" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/type-stack.png" /></a></p>
+
+<!-- readme-package-icons end -->
+
+You can find the [deployed app here](https://nestjs-prisma-postgres-sandbox.fly.dev/api).
+
+## ⚡ What is this repo about?
 
 This is a sandbox to evaluate nestjs and dig how fun it is to implement typical requirements for a backend, with an enphasis on testing, given how dearly missed this requirement can be in 'real world' examples found here and there.
 
-## :zap: Stack
-
-So let's talk about the stack (pushing on an open door here, but hey):
-
-| Package / techno             | Description                           | Documentation                                      |
-| ---------------------------- | ------------------------------------- | -------------------------------------------------- |
-| :heartpulse: typescript      | JS superset                           | <https://www.typescriptlang.org/docs/>               |
-| :smile_cat: Nestjs           | Our cats fetishists backend framework | <https://docs.nestjs.com/>                           |
-| :small_red_triangle: Prisma2 | The ORM                               | <https://www.prisma.io/docs/>                        |
-| :elephant: postgresql        | Relational database engine            | <https://www.postgresql.org/docs/>                   |
-| :bug: Jest                   | Tests library                         | <https://jestjs.io/fr/docs/getting-started>          |
-| 🧪 supertest                 | End to end testing helpers            | <https://github.com/visionmedia/supertest>           |
-| :pencil2: eslint             | Linter                                | <https://eslint.org/docs/user-guide/getting-started> |
-| :straight_ruler: prettier    | Formatter                             | <https://prettier.io/docs/en/index.html>             |
-
-## :zap: Guidelines
+## ⚡ Guidelines
 
 ### 🔶 Schema splitting
 
@@ -55,20 +46,20 @@ We want to test everything to learn how to properly test, and to face every sing
 
 All tests should run without any interaction with a database.
 
-## :zap: Usage
+## ⚡ Usage
 
 ### 🔶 run locally
 
 #### 👇 Since our prisma schemas are split within modules, we will have to merge them all in one file prisma can understand. Let's do just that
 
 ```bash
-yarn prisma:merge
+yarn prisma-merge
 ```
 
 #### 👇 Now, we need to tell prisma to generate in node_modules the code actually allowing us to interact with the database
 
 ```bash
-yarn prisma:gen
+yarn prisma-gen
 ```
 
 #### 👇 You will need docker and docker-compose to get the postgres database up and running. You can use this command to launch the database container
@@ -80,7 +71,7 @@ yarn docker
 #### 👇 Then, let's inject some data in our dev database using
 
 ```bash
-yarn prisma:seed
+yarn prisma-seed
 ```
 
 #### 👇 We can now launch the backend in dev
@@ -92,7 +83,7 @@ yarn dev
 #### 😵 You can do the merge, gen & seed steps all at once using the following command
 
 ```bash
-yarn dev:db
+yarn dev-db
 ```
 
 ### 🔶 test all the things
@@ -100,10 +91,10 @@ yarn dev:db
 🔶 We can run all the tests and get a coverage report using the following:
 
 ```bash
-yarn test:dev
+yarn test-dev
 ```
 
-## :zap: Subjects
+## ⚡ Subjects
 
 ### 🔶 Authentication
 

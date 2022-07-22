@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { pathsToModuleNameMapper } = require('ts-jest');
+const { transformTsPaths } = require('ts-paths-transform');
 
 const {
   compilerOptions: { paths: tsconfigPaths },
 } = require('./tsconfig');
 
 module.exports = {
-  roots: ['<rootDir>/src/'],
+  roots: ['<rootDir>'],
   logHeapUsage: true,
   moduleFileExtensions: ['js', 'json', 'ts'],
-  moduleNameMapper: {
-    ...pathsToModuleNameMapper(tsconfigPaths, { prefix: '<rootDir>/src' }),
-  },
+  moduleNameMapper: transformTsPaths(tsconfigPaths, {
+    prefix: '<RootDir>/../../',
+    debug: true,
+  }),
   transform: {
     '^.+\\.ts$': '@swc/jest',
   },
