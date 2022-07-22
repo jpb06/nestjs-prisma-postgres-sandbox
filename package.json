@@ -32,7 +32,9 @@
     "prisma-merge": "ts-node ./scripts/merge.prisma.schemas.ts && yarn prisma format --schema prisma/schema.prisma",
     "prisma-gen": "prisma generate",
     "prisma-seed": "yarn prisma migrate dev && yarn prisma db seed",
-    "sync-icons": "yarn generateReadmeIcons -h 70"
+    "sync-icons": "yarn generateReadmeIcons -h 70",
+    "fly-scale-up": "flyctl scale count 1",
+    "fly-scale-down": "flyctl scale count 0"
   },
   "dependencies": {
     "@nestjs/cli": "^9.0.0",
