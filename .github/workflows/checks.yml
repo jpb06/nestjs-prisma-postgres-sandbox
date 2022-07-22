@@ -45,6 +45,9 @@ jobs:
       - name: Prisma
         run: yarn prisma-merge && yarn prisma generate
 
+      - name: type-check
+        run: yarn type-check
+
       - name: Tests
         run: yarn test-ci
 
