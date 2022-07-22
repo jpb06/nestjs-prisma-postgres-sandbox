@@ -4,7 +4,9 @@ on:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
+
 name: Main workflow
+
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -41,13 +43,16 @@ jobs:
         run: yarn lint
 
       - name: Prisma
-        run: yarn prisma:merge && yarn prisma generate
+        run: yarn prisma-merge && yarn prisma generate
+
+      - name: type-check
+        run: yarn type-check
 
       - name: Tests
-        run: yarn test:ci
+        run: yarn test-ci
 
       - name: Generating coverage badges
-        uses: jpb06/jest-badges-action@v1.7.0
+        uses: jpb06/jest-badges-action@v1.9.1
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master

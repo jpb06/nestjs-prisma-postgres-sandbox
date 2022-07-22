@@ -4,7 +4,7 @@
     "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -23,17 +23,17 @@
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": false,
-    "target": "ES2020",
+    "target": "ES2022",
     "sourceMap": true,
     "outDir": "./dist",
     "paths": {
-      "@tests/*": ["./tests-related/*"],
-      "@type/*": ["./types/*"],
-      "@modules/*": ["./modules/*"],
-      "@database/*": ["./modules/database/*"],
-      "@decorators/*": ["./decorators/*"],
-      "@filters/*": ["./filters/*"],
-      "@pipes/*": ["./pipes/*"]
+      "@tests/*": ["src/tests-related/*"],
+      "@type/*": ["src/types/*"],
+      "@modules/*": ["src/modules/*"],
+      "@database/*": ["src/modules/database/*"],
+      "@decorators/*": ["src/decorators/*"],
+      "@filters/*": ["src/filters/*"],
+      "@pipes/*": ["src/pipes/*"]
     }
   }
 }
