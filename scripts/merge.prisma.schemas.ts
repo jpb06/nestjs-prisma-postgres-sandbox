@@ -31,7 +31,7 @@ void (async (): Promise<void> => {
   const files = await getAllFiles(basePath, prismaFiles, '.prisma');
   console.info(`Found ${files.length} prisma models:`, files);
 
-  const data = await Promise.all(files.map((path) => readFile(path)));
+  const data = await Promise.all(files.map((p) => readFile(p)));
   await outputFile('./prisma/schema.prisma', data.join(EOL));
   console.info('Prisma schemas merged');
 })();
