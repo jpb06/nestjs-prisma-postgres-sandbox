@@ -16,6 +16,5 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Deploying to fly.io
-        uses: superfly/flyctl-actions/setup-flyctl@master
+      - uses: superfly/flyctl-actions/setup-flyctl@master
         run: flyctl deploy --remote-only
