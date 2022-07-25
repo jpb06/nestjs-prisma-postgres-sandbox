@@ -1132,10 +1132,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.5.tgz#96be8113b014e9e7f0c3609c4a25afadd85ff659"
   integrity sha512-En7tneq+j0qAiVwysBD79y86MT3ModuoIJbe7JXp+sb5UAjInSShmK3nXXMioBzfF7rXC12hv12d4IyCVwN4dA==
 
-"@types/node@^18.0.6":
-  version "18.0.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.6.tgz#0ba49ac517ad69abe7a1508bc9b3a5483df9d5d7"
-  integrity sha512-/xUq6H2aQm261exT6iZTMifUySEt4GR5KX8eYyY+C4MSNPqSh9oNIP7tz2GLKTlFaiBbgZNxffoR3CVRG+cljw==
+"@types/node@^18.6.1":
+  version "18.6.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.6.1.tgz#828e4785ccca13f44e2fb6852ae0ef11e3e20ba5"
+  integrity sha512-z+2vB6yDt1fNwKOeGbckpmirO+VBDuQqecXkgeIqDlaOtmKn6hPR/viQ8cxCfqLU4fTlvM3+YjM367TukWdxpg==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -4688,10 +4688,10 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-readme-package-icons@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/readme-package-icons/-/readme-package-icons-1.0.7.tgz#53d2d0491a28a2ebc0cad8a8720dbbc7a266c581"
-  integrity sha512-vDoq3pdD6RZC90AT5exZbr0pGctyOeLnUnIYQpmm9EXqeQOqG+9KSLOthJfDyZIUsvOkgTaW2K3cwOWxBqJ0dA==
+readme-package-icons@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/readme-package-icons/-/readme-package-icons-1.1.0.tgz#2592bf38093110c35d511e9c651ec8c85ca64f70"
+  integrity sha512-5+8QqRg0LLazhqwxzUtdjCw10m/pJWQ8uBKlrUcUHTNzkfdAIFcLN4i7w5g8Y2vpgZqQ23/D+ylHStDqMMJB+g==
   dependencies:
     chalk "4.1.2"
     fs-extra "^10.1.0"
