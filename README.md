@@ -14,7 +14,7 @@
 
 <!-- readme-package-icons start -->
 
-<p align="left"><a href="https://docs.github.com/en/actions" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/github-actions.svg" /></a>&nbsp;<a href="https://www.typescriptlang.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" /></a>&nbsp;<a href="https://nodejs.org/en/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /></a>&nbsp;<a href="https://yarnpkg.com/api/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /></a>&nbsp;<a href="https://docs.docker.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" /></a>&nbsp;<a href="https://eslint.org/docs/latest/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg" /></a>&nbsp;<a href="https://jestjs.io/docs/getting-started" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" /></a>&nbsp;<a href="https://jwt.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/jwt.png" /></a>&nbsp;<a href="https://docs.nestjs.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" /></a>&nbsp;<a href="https://www.passportjs.org/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/passport.svg" /></a>&nbsp;<a href="https://prettier.io/docs/en/index.html" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prettier.png" /></a>&nbsp;<a href="https://www.prisma.io/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prisma.svg" /></a>&nbsp;<a href="https://rxjs.dev/guide/overview" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/rxjs.png" /></a>&nbsp;<a href="https://swagger.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swagger.png" /></a>&nbsp;<a href="https://swc.rs/docs/getting-started" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swc.svg" /></a>&nbsp;<a href="https://github.com/typestack" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/type-stack.png" /></a></p>
+<p align="left"><a href="https://docs.github.com/en/actions" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/github-actions.svg" /></a>&nbsp;<a href="https://www.typescriptlang.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" /></a>&nbsp;<a href="https://nodejs.org/en/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /></a>&nbsp;<a href="https://yarnpkg.com/api/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /></a>&nbsp;<a href="https://docs.docker.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" /></a>&nbsp;<a href="https://www.postgresql.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" /></a>&nbsp;<a href="https://eslint.org/docs/latest/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg" /></a>&nbsp;<a href="https://jestjs.io/docs/getting-started" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" /></a>&nbsp;<a href="https://jwt.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/jwt.png" /></a>&nbsp;<a href="https://docs.nestjs.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" /></a>&nbsp;<a href="https://www.passportjs.org/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/passport.svg" /></a>&nbsp;<a href="https://prettier.io/docs/en/index.html" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prettier.png" /></a>&nbsp;<a href="https://www.prisma.io/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prisma.svg" /></a>&nbsp;<a href="https://rxjs.dev/guide/overview" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/rxjs.png" /></a>&nbsp;<a href="https://swagger.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swagger.png" /></a>&nbsp;<a href="https://swc.rs/docs/getting-started" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swc.svg" /></a>&nbsp;<a href="https://github.com/typestack" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/type-stack.png" /></a></p>
 
 <!-- readme-package-icons end -->
 
@@ -88,7 +88,7 @@ yarn dev-db
 
 ### 🔶 test all the things
 
-🔶 We can run all the tests and get a coverage report using the following:
+👇 We can run all the tests and get a coverage report using the following:
 
 ```bash
 yarn test-dev
@@ -100,14 +100,14 @@ yarn test-dev
 
 Let's use passport to setup jwt based authentication.
 
-#### :rocket: Routes
+#### 🚀 Routes
 
 Two routes were defined to demonstrate the use case:
 
-| Route              | Description                   | Documentation                                                                           |
-| ------------------ | ----------------------------- | --------------------------------------------------------------------------------------- |
-| POST /users/login  | The login route               | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_login)      |
-| GET /users/profile | Logged user profile retrieval | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/users/UsersController_getProfile) |
+| Route              | Description                   | Documentation                                                                                     |
+| ------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------- |
+| POST /users/login  | The login route               | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-users/UsersController_login)      |
+| GET /users/profile | Logged user profile retrieval | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-users/UsersController_getProfile) |
 
 #### :books: Mock data
 
@@ -118,34 +118,34 @@ We have two users in database to play with the routes:
 
 #### 🧪 Tests
 
-- :white_check_mark: e2e
-- :white_check_mark: controllers
-- :white_check_mark: services
-- :white_check_mark: local passport strategy
+- ✅ e2e
+- ✅ controllers
+- ✅ services
+- ✅ local passport strategy
 
 ### 🔶 CRUD
 
 Let's create CRUD routes to manage a list of books.
 We want to make sure to give a proper feedback when foreign keys violations do occur (when we try to delete an entry whose key is referenced in another table or when we try to update an entry with a foreign key that does not exist). Let's use filters for that!
 
-#### :rocket: Routes
+#### 🚀 Routes
 
-| Route                   | Description                             | Documentation                                                                                 |
-| ----------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------- |
-| GET /books              | Retrieves all books                     | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_getBooks)         |
-| GET /authors            | Retrieves all authors                   | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_getAuthors)   |
-| GET /authors/{id}/books | Retrieves the book written by an author | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/AuthorsController_getAuthorBooks) |
-| POST /books             | Creates a book                          | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_createBook)       |
-| POST /authors           | Creates an author                       | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_createAuthor) |
-| PUT /books/{id}         | Updates a book                          | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_updateBook)       |
-| PUT /authors/{id}       | Updates an author                       | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_updateAuthor) |
-| DELETE /books/{id}      | Deletes a book                          | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/Books/BooksController_deleteBook)       |
-| DELETE /authors/{id}    | Deletes an author                       | [Link](https://nestjs-prisma-postgres.herokuapp.com/#/authors/AuthorsController_deleteAuthor) |
+| Route                   | Description                             | Documentation                                                                                           |
+| ----------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| GET /books              | Retrieves all books                     | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-books/BooksController_getBooks)         |
+| GET /authors            | Retrieves all authors                   | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-authors/AuthorsController_getAuthors)   |
+| GET /authors/{id}/books | Retrieves the book written by an author | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-books/AuthorsController_getAuthorBooks) |
+| POST /books             | Creates a book                          | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-books/BooksController_createBook)       |
+| POST /authors           | Creates an author                       | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-authors/AuthorsController_createAuthor) |
+| PUT /books/{id}         | Updates a book                          | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-books/BooksController_updateBook)       |
+| PUT /authors/{id}       | Updates an author                       | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-authors/AuthorsController_updateAuthor) |
+| DELETE /books/{id}      | Deletes a book                          | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-books/BooksController_deleteBook)       |
+| DELETE /authors/{id}    | Deletes an author                       | [Link](https://nestjs-prisma-postgres-sandbox.fly.dev/api#/crud-authors/AuthorsController_deleteAuthor) |
 
 #### 🧪 Tests
 
-- :white_check_mark: e2e
-- :white_check_mark: controllers (turns out these are pretty much useless since we mock the service)
-- :white_check_mark: services
-- :white_check_mark: validation pipe
-- :white_check_mark: filters
+- ✅ e2e
+- ✅ controllers (turns out these are pretty much useless since we mock the service)
+- ✅ services
+- ✅ validation pipe
+- ✅ filters

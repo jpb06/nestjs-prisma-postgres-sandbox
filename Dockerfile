@@ -43,6 +43,7 @@ COPY --from=build /app/node_modules/.prisma /app/node_modules/.prisma
 COPY --from=build /app/node_modules/.bin /app/node_modules/.bin
 COPY --from=build /app/dist /app/dist
 ADD . .
+RUN yarn prisma-merge
 
 COPY ./start-with-migrations.sh /
 RUN chmod +x /start-with-migrations.sh
