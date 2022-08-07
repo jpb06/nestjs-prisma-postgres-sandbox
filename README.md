@@ -1,4 +1,4 @@
-# nestjs-prisma-postgres sandbox
+# nestjs-prisma-postgres-sandbox
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://github.dev/jpb06/nestjs-prisma-postgres-sandbox)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
@@ -12,9 +12,11 @@
 ![Last deployment](https://img.shields.io/github/deployments/jpb06/nestjs-prisma-postgres-sandbox/nestjs-prisma-postgres?label=last%20deployment&logo=heroku)
 ![Last commit](https://img.shields.io/github/last-commit/jpb06/nestjs-prisma-postgres-sandbox?logo=git)
 
+Toying with nest and prisma.
+
 <!-- readme-package-icons start -->
 
-<p align="left"><a href="https://docs.github.com/en/actions" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/github-actions.svg" /></a>&nbsp;<a href="https://www.typescriptlang.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" /></a>&nbsp;<a href="https://nodejs.org/en/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /></a>&nbsp;<a href="https://yarnpkg.com/api/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /></a>&nbsp;<a href="https://fly.io/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/fly-io.png" /></a>&nbsp;<a href="https://docs.docker.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" /></a>&nbsp;<a href="https://www.postgresql.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" /></a>&nbsp;<a href="https://eslint.org/docs/latest/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg" /></a>&nbsp;<a href="https://jestjs.io/docs/getting-started" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" /></a>&nbsp;<a href="https://jwt.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/jwt.png" /></a>&nbsp;<a href="https://docs.nestjs.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" /></a>&nbsp;<a href="https://www.passportjs.org/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/passport.svg" /></a>&nbsp;<a href="https://prettier.io/docs/en/index.html" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prettier.png" /></a>&nbsp;<a href="https://www.prisma.io/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prisma.svg" /></a>&nbsp;<a href="https://rxjs.dev/guide/overview" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/rxjs.png" /></a>&nbsp;<a href="https://swagger.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swagger.png" /></a>&nbsp;<a href="https://swc.rs/docs/getting-started" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swc.svg" /></a>&nbsp;<a href="https://github.com/typestack" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/type-stack.png" /></a></p>
+<p align="left"><a href="https://docs.github.com/en/actions" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/github-actions.svg" /></a>&nbsp;<a href="https://www.typescriptlang.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" /></a>&nbsp;<a href="https://nodejs.org/en/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /></a>&nbsp;<a href="https://yarnpkg.com/api/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /></a>&nbsp;<a href="https://fly.io/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/fly-io.png" /></a>&nbsp;<a href="https://docs.docker.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" /></a>&nbsp;<a href="https://www.postgresql.org/docs/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" /></a>&nbsp;<a href="https://github.com/conventional-changelog" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/conventional-changelog.svg" /></a>&nbsp;<a href="https://eslint.org/docs/latest/" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg" /></a>&nbsp;<a href="https://jestjs.io/docs/getting-started" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" /></a>&nbsp;<a href="https://jwt.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/jwt.png" /></a>&nbsp;<a href="https://docs.nestjs.com" target="_blank"><img height="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" /></a>&nbsp;<a href="https://www.passportjs.org/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/passport.svg" /></a>&nbsp;<a href="https://prettier.io/docs/en/index.html" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prettier.png" /></a>&nbsp;<a href="https://www.prisma.io/docs/" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/prisma.svg" /></a>&nbsp;<a href="https://rxjs.dev/guide/overview" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/rxjs.png" /></a>&nbsp;<a href="https://swagger.io" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swagger.png" /></a>&nbsp;<a href="https://swc.rs/docs/getting-started" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/swc.svg" /></a>&nbsp;<a href="https://github.com/typestack" target="_blank"><img height="70" src="https://raw.githubusercontent.com/jpb06/readme-package-icons/main/icons/type-stack.png" /></a></p>
 
 <!-- readme-package-icons end -->
 
@@ -23,28 +25,6 @@ You can find the [deployed app here](https://nestjs-prisma-postgres-sandbox.fly.
 ## ⚡ What is this repo about?
 
 This is a sandbox to evaluate nestjs and dig how fun it is to implement typical requirements for a backend, with an enphasis on testing, given how dearly missed this requirement can be in 'real world' examples found here and there.
-
-## ⚡ Guidelines
-
-### 🔶 Schema splitting
-
-We do not want a huge prisma schema. We want to isolate each model (table or set of tables) in its own file.
-
-### 🔶 Well documented routes
-
-Let's have a swagger documenting properly exposed routes, that is mainly for each route:
-
-- a description.
-- the list of possible responses.
-- a definition of the inputs and outputs.
-
-### 🔶 Full testing coverage
-
-We want to test everything to learn how to properly test, and to face every single difficulty that comes with testing. We will at very least do end to end using superagent, controllers testing, service testing.
-
-### 🔶 No testing against the database
-
-All tests should run without any interaction with a database.
 
 ## ⚡ Usage
 
@@ -93,6 +73,32 @@ yarn dev-db
 ```bash
 yarn test-dev
 ```
+
+## ⚡ Guidelines
+
+### 🔶 Schema splitting
+
+We do not want a huge prisma schema. We want to isolate each model (table or set of tables) in its own file.
+
+### 🔶 Well documented routes
+
+Let's have a swagger documenting properly exposed routes, that is mainly for each route:
+
+- a description.
+- the list of possible responses.
+- a definition of the inputs and outputs.
+
+### 🔶 Full testing coverage
+
+We want to test everything to learn how to properly test, and to face every single difficulty that comes with testing. We will at very least do end to end using superagent, controllers testing, service testing.
+
+### 🔶 No testing against the database
+
+All tests should run without any interaction with a database.
+
+## ⚡ Database Schema
+
+![Diagram](./docs/schema.png)
 
 ## ⚡ Subjects
 
