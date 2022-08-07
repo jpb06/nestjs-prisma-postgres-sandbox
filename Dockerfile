@@ -26,8 +26,8 @@ COPY --from=deps /app/node_modules /app/node_modules
 ADD . .
 
 RUN yarn prisma-merge
-ADD prisma .
 RUN yarn prisma-gen
+ADD prisma .
 RUN yarn build
 
 # Finally, build the production image with minimal footprint
@@ -43,7 +43,6 @@ COPY --from=build /app/node_modules/.prisma /app/node_modules/.prisma
 COPY --from=build /app/node_modules/.bin /app/node_modules/.bin
 COPY --from=build /app/dist /app/dist
 ADD . .
-RUN yarn prisma-merge
 
 COPY ./start-with-migrations.sh /
 RUN chmod +x /start-with-migrations.sh
