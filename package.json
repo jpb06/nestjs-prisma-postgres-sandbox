@@ -60,6 +60,8 @@
     "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@nestjs/schematics": "^9.0.1",
     "@nestjs/testing": "^9.0.8",
     "@swc/core": "^1.2.224",
