@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -29,12 +29,12 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
 
       - name: Setting yarn version
-        run: yarn policies set-version 1.22.17
+        run: yarn policies set-version 1.22.19
 
       - name: Install dependencies
         run: yarn install --prefer-offline
@@ -52,7 +52,7 @@ jobs:
         run: yarn test-ci
 
       - name: Generating coverage badges
-        uses: jpb06/jest-badges-action@v1.9.1
+        uses: jpb06/jest-badges-action@v1.9.4
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
