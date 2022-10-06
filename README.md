@@ -9,6 +9,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=coverage)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 ![Coverage](./badges/coverage-jest%20coverage.svg)
 ![Github workflow](https://img.shields.io/github/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/checks?label=last%20workflow&logo=github-actions)
+![Fly deployment](https://img.shields.io/github/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/Fly%2520deploy?color=green&label=Fly%20deploy&logo=fly)
 ![Last deployment](https://img.shields.io/github/deployments/jpb06/nestjs-prisma-postgres-sandbox/nestjs-prisma-postgres?label=last%20deployment&logo=heroku)
 ![Last commit](https://img.shields.io/github/last-commit/jpb06/nestjs-prisma-postgres-sandbox?logo=git)
 
