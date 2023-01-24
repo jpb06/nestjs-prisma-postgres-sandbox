@@ -1,6 +1,8 @@
 # nestjs-prisma-postgres-sandbox
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://github.dev/jpb06/nestjs-prisma-postgres-sandbox)
+![Github workflow](https://img.shields.io/github/actions/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/checks.yml?branch=master&logo=github-actions&label=last%20workflow)
+![Github workflow](https://img.shields.io/github/actions/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/checks.yml?branch=master&logo=fly&label=Fly%20Deploy)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=security_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
@@ -8,8 +10,6 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jpb06_nestjs-prisma-postgres-sandbox&metric=coverage)](https://sonarcloud.io/dashboard?id=jpb06_nestjs-prisma-postgres-sandbox)
 ![Coverage](./badges/coverage-jest%20coverage.svg)
-![Github workflow](https://img.shields.io/github/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/checks?label=last%20workflow&logo=github-actions)
-![Fly deployment](https://img.shields.io/github/workflow/status/jpb06/nestjs-prisma-postgres-sandbox/Fly%2520deploy?color=green&label=Fly%20deploy&logo=fly)
 ![Last deployment](https://img.shields.io/github/deployments/jpb06/nestjs-prisma-postgres-sandbox/nestjs-prisma-postgres?label=last%20deployment&logo=heroku)
 ![Last commit](https://img.shields.io/github/last-commit/jpb06/nestjs-prisma-postgres-sandbox?logo=git)
 
