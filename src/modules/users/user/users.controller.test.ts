@@ -8,9 +8,9 @@ import {
   loggedUserJwtPayload,
 } from '@tests/mock-data/users.mock-data';
 
+import { UsersController } from './users.controller';
 import { AuthService } from '../auth/auth.service';
 import { JwtPayloadDto } from '../auth/dto/jwt.payload.dto';
-import { UsersController } from './users.controller';
 
 describe('Users controller', () => {
   let controller: UsersController;

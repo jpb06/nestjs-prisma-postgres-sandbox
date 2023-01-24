@@ -5,12 +5,12 @@ import { Request as ExpressRequest } from 'express';
 
 import { ApiRoute } from '@decorators/api-route';
 
+import { LoggedUserDto } from './dto/logged-user.dto';
+import { LoginDto } from './dto/login.dto';
 import { AuthService } from '../auth/auth.service';
 import { JwtPayloadDto } from '../auth/dto/jwt.payload.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt.auth-guard';
 import { LocalAuthGuard } from '../auth/guards/local.auth-guard';
-import { LoggedUserDto } from './dto/logged-user.dto';
-import { LoginDto } from './dto/login.dto';
 
 @Controller('users')
 @ApiTags('auth-users')

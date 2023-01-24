@@ -5,8 +5,8 @@ import { mockDeep } from 'jest-mock-extended';
 
 import { mockedUser } from '@tests/mock-data/users.mock-data';
 
-import { UsersService } from '../user/users.service';
 import { AuthService } from './auth.service';
+import { UsersService } from '../user/users.service';
 
 describe('AuthService', () => {
   let service: AuthService;
