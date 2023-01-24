@@ -12,8 +12,8 @@ import {
   newMockedBook,
 } from '@tests/mock-data/books.mock-data';
 
-import { AuthorsService } from '../author/authors.service';
 import { BooksService } from './books.service';
+import { AuthorsService } from '../author/authors.service';
 
 describe('Books service', () => {
   let service: BooksService;

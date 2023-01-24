@@ -4,8 +4,8 @@ import { mockDeep } from 'jest-mock-extended';
 
 import { mockedUser } from '@tests/mock-data/users.mock-data';
 
-import { AuthService } from '../auth.service';
 import { LocalStrategy } from './local.strategy';
+import { AuthService } from '../auth.service';
 
 describe('LocalStrategy', () => {
   let strategy: LocalStrategy;

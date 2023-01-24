@@ -3,9 +3,9 @@ import { forwardRef, Module } from '@nestjs/common';
 import { DatabaseModule } from '@database/database.module';
 import { AuthModule } from '@modules/users/auth/auth.module';
 
-import { AuthorsModule } from '../author/authors.module';
 import { BooksController } from './books.controller';
 import { BooksService } from './books.service';
+import { AuthorsModule } from '../author/authors.module';
 
 @Module({
   imports: [DatabaseModule, AuthModule, forwardRef(() => AuthorsModule)],

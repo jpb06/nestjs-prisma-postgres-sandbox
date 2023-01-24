@@ -16,12 +16,12 @@ import { ApiRoute } from '@decorators/api-route';
 import { ForeignKeyDeletionExceptionFilter } from '@filters/fk-deletion-exception.filter';
 import { JwtAuthGuard } from '@modules/users/auth/guards/jwt.auth-guard';
 
-import { BooksService } from '../book/books.service';
-import { PersistedBookDto } from '../book/dto/persisted-book.dto';
 import { AuthorsService } from './authors.service';
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { PersistedAuthorDto } from './dto/persisted-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';
+import { BooksService } from '../book/books.service';
+import { PersistedBookDto } from '../book/dto/persisted-book.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('authors')
