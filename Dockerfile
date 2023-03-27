@@ -1,5 +1,5 @@
 # base node image
-FROM node:16-bullseye-slim as base
+FROM node:16-bullseye-slim AS base
 
 # Install dependencies
 RUN apt-get update && apt-get install -y openssl make g++ gcc python3
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y openssl make g++ gcc python3
 ENV NODE_ENV=production
 
 # Install all node_modules, including dev dependencies
-FROM base as deps
+FROM base AS deps
 
 RUN mkdir /app
 WORKDIR /app
@@ -17,7 +17,7 @@ ADD package.json yarn.lock ./
 RUN yarn install --production=false
 
 # Build the app
-FROM base as build
+FROM base AS build
 
 RUN mkdir /app
 WORKDIR /app
