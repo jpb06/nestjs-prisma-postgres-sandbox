@@ -31,7 +31,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
 
       - name: Setting yarn version
         run: yarn policies set-version 1.22.19
@@ -52,7 +52,7 @@ jobs:
         run: yarn test-ci
 
       - name: Generating coverage badges
-        uses: jpb06/jest-badges-action@v1.9.5
+        uses: jpb06/jest-badges-action@v1.9.15
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
