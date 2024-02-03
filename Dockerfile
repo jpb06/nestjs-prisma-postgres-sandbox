@@ -1,5 +1,5 @@
 # base node image
-FROM node:18-bullseye-slim AS base
+FROM node:20-bullseye-slim AS base
 
 # Install dependencies
 RUN apt-get update && apt-get install -y openssl make g++ gcc python3
