@@ -55,7 +55,7 @@ jobs:
         uses: jpb06/jest-badges-action@v1.9.18
 
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarqube-scan-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
